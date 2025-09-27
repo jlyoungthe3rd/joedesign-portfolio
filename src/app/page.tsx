@@ -1,59 +1,120 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function Home() {
+  const projects = [
+    {
+      title: 'Project Title 1',
+      description: 'A short description of the first project.',
+      image: '/file.svg',
+      link: '#',
+    },
+    {
+      title: 'Project Title 2',
+      description: 'A short description of the second project.',
+      image: '/globe.svg',
+      link: '#',
+    },
+    {
+      title: 'Project Title 3',
+      description: 'A short description of the third project.',
+      image: '/window.svg',
+      link: '#',
+    },
+  ];
+
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-white dark:bg-black text-black dark:text-white p-8'>
-      <style>{`
-        @keyframes pokeball-move {
-          0% { transform: translateX(-30px) rotate(-10deg); }
-          20% { transform: translateX(0px) rotate(0deg); }
-          50% { transform: translateX(30px) rotate(10deg); }
-          80% { transform: translateX(0px) rotate(0deg); }
-          100% { transform: translateX(-30px) rotate(-10deg); }
-        }
-      `}</style>
-      <div className='flex flex-col items-center gap-6'>
-        <div
-          style={{
-            display: 'inline-block',
-            animation:
-              'pokeball-move 1.2s infinite cubic-bezier(.68,-0.55,.27,1.55)',
-          }}
-        >
-          <svg
-            width='80'
-            height='80'
-            viewBox='0 0 80 80'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <circle
-              cx='40'
-              cy='40'
-              r='32'
-              fill='#fff'
-              stroke='#222'
-              strokeWidth='4'
-            />
-            <path d='M8 40h64' stroke='#222' strokeWidth='4' />
-            <path d='M8 40a32 32 0 0 1 64 0' fill='#E53E3E' />
-            <circle
-              cx='40'
-              cy='40'
-              r='12'
-              fill='#fff'
-              stroke='#222'
-              strokeWidth='4'
-            />
-            <circle cx='40' cy='40' r='6' fill='#222' />
-            <circle cx='43' cy='37' r='2' fill='#fff' />
-          </svg>
+    <div className='flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white'>
+      <header className='sticky top-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-sm'>
+        <div className='container mx-auto px-6 py-4'>
+          <nav className='flex items-center justify-end space-x-8'>
+            <Link
+              href='#projects'
+              className='text-lg hover:text-gray-400 transition-colors'
+            >
+              Projects
+            </Link>
+            <Link
+              href='#about'
+              className='text-lg hover:text-gray-400 transition-colors'
+            >
+              About
+            </Link>
+          </nav>
         </div>
-        <h1 className='text-3xl font-bold'>Under Construction</h1>
-        <p className='text-lg text-center max-w-md'>
-          This portfolio site is a work in progress.
-          <br />
-          Please check back soon for updates!
-        </p>
-      </div>
+      </header>
+
+      <main className='flex-grow'>
+        <section id='hero' className='container mx-auto px-6 py-32 text-center'>
+          <h1 className='text-6xl font-bold'>Joe Young</h1>
+          <p className='mt-4 text-2xl text-gray-600 dark:text-gray-300'>
+            Building Logic Systems & Encounters That Reward Mastery
+          </p>
+        </section>
+
+        <section id='projects' className='py-20 bg-gray-50 dark:bg-gray-900'>
+          <div className='container mx-auto px-6'>
+            <h2 className='text-4xl font-bold text-center mb-12'>
+              Featured Projects
+            </h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
+              {projects.map((project) => (
+                <div key={project.title} className='text-center'>
+                  <h3 className='text-2xl font-semibold mb-4'>
+                    {project.title}
+                  </h3>
+                  <div className='relative h-60 w-full mb-4'>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      layout='fill'
+                      objectFit='contain'
+                    />
+                  </div>
+                  <p className='text-gray-600 dark:text-gray-400'>
+                    {project.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id='about' className='py-32'>
+          <div className='container mx-auto px-6 text-center'>
+            <h2 className='text-4xl font-bold mb-4'>About Me</h2>
+            <p className='max-w-2xl mx-auto text-lg'>
+              [Your about me text will go here. Tell everyone a little bit about
+              yourself, your skills, and your passions.]
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer className='bg-gray-100 dark:bg-gray-900 py-8'>
+        <div className='container mx-auto px-6 text-center'>
+          <div className='flex justify-center space-x-6'>
+            <Link
+              href='https://linkedin.com/in/your-profile'
+              className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+            >
+              LinkedIn
+            </Link>
+            <Link
+              href='https://github.com/your-username'
+              className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+            >
+              GitHub
+            </Link>
+            <Link
+              href='mailto:your-email@example.com'
+              className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
+            >
+              Email
+            </Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
