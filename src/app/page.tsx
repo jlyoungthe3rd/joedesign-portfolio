@@ -25,56 +25,78 @@ export default function Home() {
 
   return (
     <div className='flex flex-col min-h-screen bg-white dark:bg-black text-black dark:text-white'>
-      <header className='sticky top-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-sm'>
+      <header className='sticky top-0 z-50 w-full bg-gray-100 dark:bg-gray-800'>
         <div className='container mx-auto px-6 py-4'>
-          <nav className='flex items-center justify-end space-x-8'>
-            <Link
-              href='#projects'
-              className='text-lg hover:text-gray-400 transition-colors'
-            >
-              Projects
-            </Link>
-            <Link
-              href='#about'
-              className='text-lg hover:text-gray-400 transition-colors'
-            >
-              About
-            </Link>
+          <nav className='flex items-center justify-between'>
+            <div className='flex items-center space-x-4'>
+              <div className='w-10 h-10 bg-gray-400 rounded-full' />
+              <span className='text-xl font-bold'>Joe Young</span>
+            </div>
+            <div className='flex items-center space-x-8'>
+              <Link
+                href='#projects'
+                className='text-lg hover:text-gray-400 transition-colors'
+              >
+                Projects
+              </Link>
+              <Link
+                href='#about'
+                className='text-lg hover:text-gray-400 transition-colors'
+              >
+                About
+              </Link>
+            </div>
           </nav>
         </div>
       </header>
 
       <main className='flex-grow'>
-        <section id='hero' className='container mx-auto px-6 py-32 text-center'>
-          <h1 className='text-6xl font-bold'>Joe Young</h1>
-          <p className='mt-4 text-2xl text-gray-600 dark:text-gray-300'>
-            Building Logic Systems & Encounters That Reward Mastery
-          </p>
+        <section
+          id='hero'
+          className='bg-gray-50 dark:bg-gray-900 py-32 text-center'
+        >
+          <div className='container mx-auto px-6'>
+            <h1 className='text-6xl font-bold'>Joe Young</h1>
+            <p className='mt-4 text-2xl text-gray-600 dark:text-gray-300'>
+              Building Logic Systems & Encounters That Reward Mastery
+            </p>
+            <div className='mt-8'>
+              <Link
+                href='#projects'
+                className='bg-black text-white dark:bg-white dark:text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors'
+              >
+                Explore My Portfolio
+              </Link>
+            </div>
+          </div>
         </section>
 
-        <section id='projects' className='py-20 bg-gray-50 dark:bg-gray-900'>
+        <section id='projects' className='py-16'>
           <div className='container mx-auto px-6'>
             <h2 className='text-4xl font-bold text-center mb-12'>
               Featured Projects
             </h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
               {projects.map((project) => (
-                <div key={project.title} className='text-center'>
-                  <h3 className='text-2xl font-semibold mb-4'>
-                    {project.title}
-                  </h3>
-                  <div className='relative h-60 w-full mb-4'>
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      layout='fill'
-                      objectFit='contain'
-                    />
+                <Link href={project.link} key={project.title}>
+                  <div className='text-center group cursor-pointer'>
+                    <div className='relative h-60 w-full mb-4 overflow-hidden rounded-lg'>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        layout='fill'
+                        objectFit='contain'
+                        className='group-hover:scale-105 transition-transform duration-300'
+                      />
+                    </div>
+                    <h3 className='text-2xl font-semibold mb-2'>
+                      {project.title}
+                    </h3>
+                    <p className='text-gray-600 dark:text-gray-400'>
+                      {project.description}
+                    </p>
                   </div>
-                  <p className='text-gray-600 dark:text-gray-400'>
-                    {project.description}
-                  </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
