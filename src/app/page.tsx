@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import NavLink from '@/components/NavLink';
 
 export default function Home() {
   const projects = [
@@ -7,7 +8,7 @@ export default function Home() {
       title: 'Project Title 1',
       description: 'A short description of the first project.',
       image: '/file.svg',
-      link: '#',
+      link: '/projects/project-1',
     },
     {
       title: 'Project Title 2',
@@ -30,21 +31,13 @@ export default function Home() {
           <nav className='flex items-center justify-between'>
             <div className='flex items-center space-x-4'>
               <div className='w-10 h-10 bg-gray-400 rounded-full' />
-              <span className='text-xl font-bold'>Joe Young</span>
+              <Link href='/' className='text-xl font-bold'>
+                Joe Young
+              </Link>
             </div>
             <div className='flex items-center space-x-8'>
-              <Link
-                href='#projects'
-                className='text-lg hover:text-gray-400 transition-colors'
-              >
-                Projects
-              </Link>
-              <Link
-                href='#about'
-                className='text-lg hover:text-gray-400 transition-colors'
-              >
-                About
-              </Link>
+              <NavLink href='/projects'>Projects</NavLink>
+              <NavLink href='/about'>About</NavLink>
             </div>
           </nav>
         </div>
