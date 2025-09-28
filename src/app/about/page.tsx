@@ -3,39 +3,81 @@ import NavLink from '@/components/NavLink';
 
 export default function AboutPage() {
   return (
-    <section className='py-20'>
+    <section className='py-5'>
       <div className='container mx-auto px-6'>
-        <div className='flex justify-center mb-12'>
-          <div className='w-full max-w-md h-96 bg-gray-200 dark:bg-gray-700 rounded-lg' />
-        </div>
-        <div className='max-w-2xl mx-auto text-center mb-16'>
-          <p className='text-lg'>
-            [Your about me text will go here. Tell everyone a little bit about
-            yourself, your skills, and your passions.]
-          </p>
+        <div className='grid md:grid-cols-2 gap-12 items-center'>
+          <div className='w-full max-w-sm h-80 bg-gray-200 dark:bg-gray-700 rounded-lg mx-auto' />
+          <div className='text-center md:text-left'>
+            <p className='mb-8'>
+              I am an intention-driven Encounter Designer enthusiastic about
+              crafting compelling challenges that effectively teach game
+              mechanics and inspire players to experiment with systems,
+              ultimately allowing them to display their mastery. My primary
+              experience comes from designing a <b>turn-based roguelike</b>,
+              where I created, playtested, and balanced all enemy compositions
+              and boss encounters. For that project, I used <b>Unity</b>,{' '}
+              <b>C#</b>, <b>Figma</b>, and Google Sheets. I thrive in
+              collaborative environments alongside other passionate creatives
+              who welcome feedback and actively seek opportunities for shared
+              learning.
+            </p>
+            <div className='flex justify-center gap-4'>
+              <Link
+                href='/resume'
+                className='inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300'
+              >
+                View Resume
+              </Link>
+              <Link
+                href='/projects/project-1'
+                className='inline-block bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300'
+              >
+                View Projects
+              </Link>
+            </div>
+          </div>
         </div>
 
-        <div className='space-y-16'>
+        <div className='space-y-16 mt-16'>
           <div className='bg-gray-50 dark:bg-gray-900 p-8 rounded-lg'>
             <h2 className='text-3xl font-bold mb-4 text-center'>
               Experience & Education
             </h2>
             <div className='text-center'>
               <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                [Your experience and education details here.]
+                <b>Institution:</b> University of Washington <br />
+                <b>Degree/Program:</b> Game Design <br />
+                <b>Status:</b> Completed 2025 <br />
+                <b>Program Highlight:</b> Took what I learned about{' '}
+                <b>
+                  finding the fun, gameplay balancing, and player experience
+                </b>{' '}
+                to design and balance all enemy encounters and boss fights for a
+                turn-based roguelike using Unity and C#
               </p>
               <div className='border-t border-gray-200 dark:border-gray-700 my-6' />
               <h3 className='text-2xl font-semibold mb-2'>
-                Project 1 Subsection
+                Department of Malicious Vagueness
               </h3>
               <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                [Placeholder text for the Project 1 subsection.]
+                <b>Capstone Project:</b> Turn-Based Roguelike Game <br />
+                <b>The Goal:</b> Create a playable build of an MVP for a video
+                game with a team of other designers <br />
+                <b>Your Specific Role:</b> Served as Encounter Designer,
+                focusing on designing and implementing enemies and the boss
+                encounter
+                <br />
+                <b>The Result/Impact:</b> Designed and implemented an enemy
+                roster whose unique mechanics and behaviors reinforced core
+                narrative themes and advanced player skill progression. This
+                culminated in a multi-phase boss encounter that successfully
+                tested the player&apos;s mastery of all game systems.
               </p>
               <Link
                 href='/projects/project-1'
                 className='text-blue-500 hover:underline'
               >
-                View Project 1
+                View Project Details
               </Link>
             </div>
           </div>
@@ -43,17 +85,85 @@ export default function AboutPage() {
             <h2 className='text-3xl font-bold mb-4 text-center'>
               Design Skills
             </h2>
-            <p className='text-gray-600 dark:text-gray-400 text-center'>
-              [List your design skills here.]
-            </p>
+            <div className='grid md:grid-cols-3 gap-8 text-center'>
+              <div>
+                <h3 className='text-xl font-semibold mb-2'>
+                  Encounter & Combat Design
+                </h3>
+                {/*add link to enemy design area*/}
+                <ul className='text-sm list-disc list-inside inline-block text-left'>
+                  <li>Balancing</li>
+                  <li>Boss Design</li>
+                  <li>Enemy Design</li>
+                  <li>Mechanics Design</li>
+                  <li>Enemy Design</li>
+                  <li>Mechanics Design</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-xl font-semibold mb-2'>
+                  Core Design Thinking
+                </h3>
+                {/*add link to boss design area*/}
+                <ul className='text-sm list-disc list-inside inline-block text-left'>
+                  <li>Systems Design</li>
+                  <li>Prototyping</li>
+                  <li>Player Flow / Experience</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-xl font-semibold mb-2'>
+                  Environmental Context
+                </h3>
+                {/*add link to boss design area*/}
+                <ul className='text-sm list-disc list-inside inline-block text-left'>
+                  <li>Level Design (2D)</li>
+                  <li>Narrative Design</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div className='bg-gray-50 dark:bg-gray-900 p-8 rounded-lg'>
             <h2 className='text-3xl font-bold mb-4 text-center'>
               Technical Skills
             </h2>
-            <p className='text-gray-600 dark:text-gray-400 text-center'>
-              [List your technical skills here.]
-            </p>
+            <div className='grid md:grid-cols-3 gap-8 text-center'>
+              <div>
+                <h3 className='text-xl font-semibold mb-2'>
+                  Game Engine & Prototyping
+                </h3>
+                <ul className='text-sm list-disc list-inside inline-block text-left'>
+                  <li>Unity</li>
+                  <li>Visual Scripting</li>
+                  <li>Figma</li>
+                  <li>Enemy Design</li>
+                  <li>Mechanics Design</li>
+                  <li>Enemy Design</li>
+                  <li>Mechanics Design</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-xl font-semibold mb-2'>Programming</h3>
+                <ul className='text-sm list-disc list-inside inline-block text-left'>
+                  <li>C#</li>
+                  <li>Object-Oriented Programming</li>
+                  <li>Algorithms</li>
+                  <li>Data Structures</li>
+                  <li>Design Patterns</li>
+                  <li>Debugging</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-xl font-semibold mb-2'>
+                  Development Workflow
+                </h3>
+                <ul className='text-sm list-disc list-inside inline-block text-left'>
+                  <li>Jira</li>
+                  <li>Git</li>
+                  <li>Agile/Scrum</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

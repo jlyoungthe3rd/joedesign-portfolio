@@ -23,7 +23,7 @@ export default function Footer() {
             <FaGithub size='1.5em' />
           </Link>
           <Link
-            href='mailto:your-email@example.com'
+            href='mailto:jlyoungthe3rd@gmail.com'
             className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
             aria-label='Email'
           >

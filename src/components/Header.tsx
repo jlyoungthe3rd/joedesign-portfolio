@@ -16,6 +16,7 @@ export default function Header() {
         <nav className='mt-8 flex justify-center space-x-8'>
           <NavLink href='/'>Portfolio</NavLink>
           <NavLink href='/about'>About</NavLink>
+          <NavLink href='/resume'>Resume</NavLink>
           <NavLink href='/blog'>Blog</NavLink>
         </nav>
       </div>
