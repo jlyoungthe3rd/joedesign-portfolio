@@ -26,6 +26,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - and other static assets in the public folder
      */
-    '/((?!_next/static|_next/image|favicon.ico|j-icon.svg|file.svg|globe.svg|window.svg).*)',
+    '/((?!_next/static|_next/image|favicon.ico|j-icon.svg|file.svg|globe.svg|window.svg|eva-01.gif).*)',
   ],
 };
