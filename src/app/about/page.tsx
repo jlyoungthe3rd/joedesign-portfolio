@@ -13,7 +13,7 @@ export default function AboutPage() {
               crafting compelling challenges that effectively teach game
               mechanics and inspire players to experiment with systems,
               ultimately allowing them to display their mastery. My primary
-              experience comes from designing a <b>turn-based roguelike</b>,
+              experience comes from designing a <b>turn-based roguelite</b>,
               where I created, playtested, and balanced all enemy compositions
               and boss encounters. For that project, I used <b>Unity</b>,{' '}
               <b>C#</b>, <b>Figma</b>, and Google Sheets. I thrive in
@@ -53,14 +53,14 @@ export default function AboutPage() {
                   finding the fun, gameplay balancing, and player experience
                 </b>{' '}
                 to design and balance all enemy encounters and boss fights for a
-                turn-based roguelike using Unity and C#
+                turn-based roguelite using Unity and C#
               </p>
               <div className='border-t border-gray-200 dark:border-gray-700 my-6' />
               <h3 className='text-2xl font-semibold mb-2'>
                 Department of Malicious Vagueness
               </h3>
               <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                <b>Capstone Project:</b> Turn-Based Roguelike Game <br />
+                <b>Capstone Project:</b> Turn-Based Roguelite Game <br />
                 <b>The Goal:</b> Create a playable build of an MVP for a video
                 game with a team of other designers <br />
                 <b>Your Specific Role:</b> Served as Encounter Designer,

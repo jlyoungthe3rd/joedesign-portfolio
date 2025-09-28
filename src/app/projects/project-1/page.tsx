@@ -136,16 +136,46 @@ export default function Project1Page() {
       <ScrollFadeIn>
         <div className='grid md:grid-cols-2 gap-8 items-center mb-12'>
           <div>
-            <h1 className='text-5xl font-bold'>Game Title</h1>
-            <p className='text-xl text-gray-600 dark:text-gray-400 mt-2'>
-              Engine: Unity <br />
-              Role: Encounter Designer, Programming
-            </p>
+            <h1 className='text-4xl font-bold'>
+              Department of Malicious Vagueness
+            </h1>
             <p className='mt-4'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et
-              massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien
-              fringilla, mattis ligula consectetur, ultrices mauris.
+              The Department of Malicious Vagueness is a social roguelite
+              combining elements from <i>Papers Please</i> and{' '}
+              <i>Slay the Spire</i> set in an afterlife DMV where doing your job
+              too well gets you promoted out of existence and slacking off gets
+              you fired into oblivion. Balance bureaucratic efficiency with
+              quiet rebellion as you manipulate metaphysical paperwork, while
+              maintaining your existence in purgatory.
+              <br />
+              <br />
+              As the Encounter Designer, I was responsible for designing and
+              implementing all enemy encounters and the multi-phase boss fight.
+              This involved creating enemy mechanics that reinforced narrative
+              and core gameplay themes while providing meaningful challenges for
+              players.
             </p>
+            <ul className='text-gray-600 dark:text-gray-400 mt-2 list-disc list-inside'>
+              <li>
+                <b>Engine:</b> Unity
+              </li>
+              <li>
+                <b>Role:</b> Encounter Designer, Programming
+              </li>
+              <li>
+                <b>Team:</b> 6 core + 2 supporting artists
+              </li>
+            </ul>
+            <div className='flex justify-center mt-6'>
+              <a
+                href='https://kaejaegames.itch.io/dmv'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-block px-6 py-3 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900'
+              >
+                Click to Play
+              </a>
+            </div>
           </div>
           <div className='relative w-full h-96'>
             <Image
