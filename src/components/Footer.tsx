@@ -12,6 +12,8 @@ export default function Footer() {
             href='https://www.linkedin.com/in/joelewisyoung/'
             className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
             aria-label='LinkedIn'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             <FaLinkedin size='1.5em' />
           </Link>
@@ -19,6 +21,8 @@ export default function Footer() {
             href='https://github.com/jlyoungthe3rd'
             className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
             aria-label='GitHub'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             <FaGithub size='1.5em' />
           </Link>
