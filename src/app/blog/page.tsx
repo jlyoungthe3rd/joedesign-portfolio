@@ -1,5 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import NavLink from '@/components/NavLink';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+};
 
 export default function BlogPage() {
   return (

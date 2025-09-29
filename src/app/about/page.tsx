@@ -1,5 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import NavLink from '@/components/NavLink';
+
+export const metadata: Metadata = {
+  title: 'About',
+};
 
 export default function AboutPage() {
   return (
@@ -29,7 +34,7 @@ export default function AboutPage() {
                 View Resume
               </Link>
               <Link
-                href='/projects/project-1'
+                href='/'
                 className='inline-block bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300'
               >
                 View Projects

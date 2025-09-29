@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Joe Designs Games',
+  title: {
+    default: 'Joe Young',
+    template: 'Joe Young -- %s',
+  },
   description: 'The best games for you',
   icons: {
     icon: '/j-icon.svg',
