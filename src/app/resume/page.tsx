@@ -5,7 +5,7 @@ export const metadata: Metadata = {
 };
 
 export default function ResumePage() {
-  const documentId = '1K7p3JawDkJeplqMqhVxyH0YagVNyEwbiIHmo2-H7FJQ';
+  const documentId = '1SiDWXDImuUIDYJ1Tioxffezi2Ukk3H4XAcaqTafZgp0';
   const embedUrl = `https://docs.google.com/document/d/${documentId}/preview`;
   const downloadUrl = `https://docs.google.com/document/d/${documentId}/export?format=pdf`;
   const viewUrl = `https://docs.google.com/document/d/${documentId}/edit?usp=sharing`;
