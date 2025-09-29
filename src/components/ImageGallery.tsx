@@ -1,0 +1,191 @@
+'use client';
+
+import { useState, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react';
+import Image from 'next/image';
+
+interface ImageGalleryProps {
+  images: {
+    src: string;
+    alt: string;
+  }[];
+}
+
+export interface ImageGalleryRef {
+  openLightbox: (index: number) => void;
+}
+
+const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images }, ref) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
+
+  useImperativeHandle(ref, () => ({
+    openLightbox,
+  }));
+
+  const closeLightbox = () => {
+    setIsOpen(false);
+  };
+
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  }, [images.length]);
+
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  }, [images.length]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+      
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        goToPrevious();
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        goToNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isOpen, goToPrevious, goToNext]);
+
+  // Handle mouse wheel navigation
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!isOpen) return;
+      
+      e.preventDefault();
+      if (e.deltaY > 0) {
+        goToNext();
+      } else {
+        goToPrevious();
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [isOpen, goToNext, goToPrevious]);
+
+  return (
+    <>
+      {/* Thumbnail Grid - Responsive Layout */}
+      <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto'>
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className='relative w-24 h-24 sm:w-28 sm:h-28 lg:w-36 lg:h-36 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-300 rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700'
+              onClick={() => openLightbox(index)}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className='object-cover'
+                sizes='(max-width: 640px) 96px, (max-width: 1024px) 112px, 144px'
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {isOpen && (
+        <div className='fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center' onClick={closeLightbox}>
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            className='absolute top-4 right-4 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full p-2 z-20 transition-all'
+            aria-label='Close gallery'
+          >
+            <svg 
+              className='w-6 h-6' 
+              fill='none' 
+              stroke='currentColor' 
+              viewBox='0 0 24 24'
+            >
+              <path 
+                strokeLinecap='round' 
+                strokeLinejoin='round' 
+                strokeWidth={2} 
+                d='M6 18L18 6M6 6l12 12' 
+              />
+            </svg>
+          </button>
+
+          {/* Previous Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+            className='absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 z-10'
+            aria-label='Previous image'
+          >
+            ‹
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            className='absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 z-10'
+            aria-label='Next image'
+          >
+            ›
+          </button>
+
+          {/* Current Image */}
+          <div 
+            className='relative max-w-4xl max-h-[80vh] w-full h-full mx-4 cursor-pointer'
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            title='Click to go to next image'
+          >
+            <Image
+              src={images[currentIndex].src}
+              alt={images[currentIndex].alt}
+              fill
+              className='object-contain'
+            />
+          </div>
+
+          {/* Image Counter */}
+          <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm'>
+            {currentIndex + 1} / {images.length}
+          </div>
+
+          {/* Instructions */}
+          <div className='absolute bottom-4 right-4 text-white text-xs opacity-70'>
+            Click image, use arrows, or scroll to navigate • ESC to close
+          </div>
+
+
+        </div>
+      )}
+    </>
+  );
+});
+
+ImageGallery.displayName = 'ImageGallery';
+
+export default ImageGallery;
