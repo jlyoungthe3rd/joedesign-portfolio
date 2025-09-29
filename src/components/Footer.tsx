@@ -9,14 +9,14 @@ export default function Footer() {
       <div className='container mx-auto px-6 text-center'>
         <div className='flex justify-center space-x-6'>
           <Link
-            href='https://linkedin.com/in/your-profile'
+            href='https://www.linkedin.com/in/joelewisyoung/'
             className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
             aria-label='LinkedIn'
           >
             <FaLinkedin size='1.5em' />
           </Link>
           <Link
-            href='https://github.com/your-username'
+            href='https://github.com/jlyoungthe3rd'
             className='text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'
             aria-label='GitHub'
           >
