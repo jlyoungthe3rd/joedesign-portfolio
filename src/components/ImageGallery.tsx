@@ -27,18 +27,50 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
     openLightbox,
   }));
 
+  // Determine responsive grid layout based on image count
+  const getGridClasses = () => {
+    const count = images.length;
+
+    if (count === 1) {
+      return 'grid grid-cols-1 justify-items-center gap-6 max-w-md mx-auto';
+    } else if (count === 2) {
+      return 'grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto';
+    } else if (count === 3) {
+      return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto';
+    } else if (count <= 6) {
+      return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-3xl mx-auto';
+    } else {
+      return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto';
+    }
+  };
+
+  // Determine image size based on count
+  const getImageSizeClasses = () => {
+    const count = images.length;
+
+    if (count === 1) {
+      return 'relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64';
+    } else if (count === 2) {
+      return 'relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48';
+    } else if (count <= 4) {
+      return 'relative w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40';
+    } else {
+      return 'relative w-24 h-24 sm:w-28 sm:h-28 lg:w-36 lg:h-36';
+    }
+  };
+
   const closeLightbox = () => {
     setIsOpen(false);
   };
 
   const goToPrevious = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   }, [images.length]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   }, [images.length]);
@@ -47,7 +79,7 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (!isOpen) return;
-      
+
       if (e.key === 'Escape') {
         closeLightbox();
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
@@ -65,7 +97,7 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (!isOpen) return;
-      
+
       e.preventDefault();
       if (e.deltaY > 0) {
         goToNext();
@@ -85,11 +117,11 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
     <>
       {/* Thumbnail Grid - Responsive Layout */}
       <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
-        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto'>
+        <div className={getGridClasses()}>
           {images.map((image, index) => (
             <div
               key={index}
-              className='relative w-24 h-24 sm:w-28 sm:h-28 lg:w-36 lg:h-36 cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-300 rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700'
+              className={`${getImageSizeClasses()} cursor-pointer hover:opacity-80 hover:scale-105 transition-all duration-300 rounded-lg overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-700`}
               onClick={() => openLightbox(index)}
             >
               <Image
@@ -97,7 +129,7 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
                 alt={image.alt}
                 fill
                 className='object-cover'
-                sizes='(max-width: 640px) 96px, (max-width: 1024px) 112px, 144px'
+                sizes='(max-width: 640px) 96px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px'
               />
             </div>
           ))}
@@ -106,24 +138,27 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
 
       {/* Lightbox Modal */}
       {isOpen && (
-        <div className='fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center' onClick={closeLightbox}>
+        <div
+          className='fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center'
+          onClick={closeLightbox}
+        >
           {/* Close Button */}
           <button
             onClick={closeLightbox}
             className='absolute top-4 right-4 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full p-2 z-20 transition-all'
             aria-label='Close gallery'
           >
-            <svg 
-              className='w-6 h-6' 
-              fill='none' 
-              stroke='currentColor' 
+            <svg
+              className='w-6 h-6'
+              fill='none'
+              stroke='currentColor'
               viewBox='0 0 24 24'
             >
-              <path 
-                strokeLinecap='round' 
-                strokeLinejoin='round' 
-                strokeWidth={2} 
-                d='M6 18L18 6M6 6l12 12' 
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M6 18L18 6M6 6l12 12'
               />
             </svg>
           </button>
@@ -153,7 +188,7 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
           </button>
 
           {/* Current Image */}
-          <div 
+          <div
             className='relative max-w-4xl max-h-[80vh] w-full h-full mx-4 cursor-pointer'
             onClick={(e) => {
               e.stopPropagation();
@@ -178,8 +213,6 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(({ images },
           <div className='absolute bottom-4 right-4 text-white text-xs opacity-70'>
             Click image, use arrows, or scroll to navigate • ESC to close
           </div>
-
-
         </div>
       )}
     </>
