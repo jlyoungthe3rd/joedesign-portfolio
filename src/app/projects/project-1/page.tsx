@@ -14,6 +14,8 @@ export default function Project1Page() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isResourceVideoModalOpen, setIsResourceVideoModalOpen] =
     useState(false);
+  const [isTensionVideoModalOpen, setIsTensionVideoModalOpen] = useState(false);
+  const [isBossVideoModalOpen, setIsBossVideoModalOpen] = useState(false);
   const galleryRef = useRef<ImageGalleryRef>(null);
 
   const handleScriptableObjectClick = () => {
@@ -88,16 +90,17 @@ export default function Project1Page() {
           <br />
           <ul className='list-disc list-inside'>
             <li>Enemies with deathknells</li>
-            <li>Downsides that can't be mitigated</li>
+            <li>Downsides that can&apos;t be mitigated</li>
             <li>Adaptation to enemy behaviors</li>
           </ul>
           <br />
           <span className='underline'>Reflection:</span> I had originally
-          planned to have deathknells synergize with certain enemy types, but
-          ran out of time to implement this. I originally planned to do this
-          once we had an acceptable amount of enemies, but if I could do it
-          again I would design for this earlier on to have at least a few
-          enemies that synergized with deathknells.
+          planned to have deathknells synergize with certain enemy types to
+          create more tense(hopefully sometimes fun) situations, but ran out of
+          time to implement this. I originally planned to do this once we had an
+          acceptable amount of enemies, but if I could do it again I would
+          design for this earlier on to have at least a few enemies that
+          synergized with deathknells.
         </>
       ),
     },
@@ -119,27 +122,6 @@ export default function Project1Page() {
           We decided to have the enemies give tells through text that allowed
           players to understand what their intentions were so they could make
           informed decisions
-        </>
-      ),
-    },
-    {
-      title: 'Narrative Design',
-      description: (
-        <>
-          <span className='italic'>
-            Problem: Give story beats and narrative while keeping the player
-            engaged
-          </span>{' '}
-          <br />
-          <span className='italic'>
-            Solution: We created lines of dialogue that changed depending on the
-            player being successful/unsuccessful in properly dealing with them.
-          </span>
-          <br />
-          <br />
-          The enemies have several lines of dialogue to not only fit the theme
-          of the world, but also to inform the player if they’re successfully
-          managing them.
         </>
       ),
     },
@@ -283,7 +265,6 @@ export default function Project1Page() {
                 <li>Difficulty Pacing and Introduction</li>
                 <li>Resource and Tension Management</li>
                 <li>Implemented Visual Tells</li>
-                <li>Narrative Design</li>
               </ul>
             </div>
             <div>
@@ -400,6 +381,7 @@ export default function Project1Page() {
                   </div>
                 ) : i === 2 ? (
                   <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner w-full max-w-lg flex flex-col gap-6'>
+                    {/* Resource Management Video */}
                     <div
                       className='relative cursor-pointer group'
                       onClick={() => setIsResourceVideoModalOpen(true)}
@@ -423,11 +405,42 @@ export default function Project1Page() {
                         </div>
                       </div>
                     </div>
+                    {/* Tension Management Video */}
+                    <div
+                      className='relative cursor-pointer group'
+                      onClick={() => setIsTensionVideoModalOpen(true)}
+                    >
+                      <video
+                        className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      >
+                        <source
+                          src='/projects/project-1/videos/tension.mp4'
+                          type='video/mp4'
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg'>
+                        <div className='bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-sm font-medium'>
+                          Click to enlarge
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : i === 3 ? (
+                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
                     <ImageGallery
                       images={[
                         {
-                          src: '/projects/project-1/pacing/pacing1.PNG',
-                          alt: 'Resource and Tension Management - Pacing Overview',
+                          src: '/projects/project-1/tells/tell1.PNG',
+                          alt: 'Visual Tells - Enemy Action Indicators',
+                        },
+                        {
+                          src: '/projects/project-1/tells/tells2.PNG',
+                          alt: 'Visual Tells - Player Decision Making',
                         },
                       ]}
                     />
@@ -456,12 +469,65 @@ export default function Project1Page() {
             <div className='mb-8 border-b border-gray-200 dark:border-gray-700 pb-8'>
               <h3 className='text-2xl font-semibold mb-2'>{design.title}</h3>
               <p className='mb-4'>{design.description}</p>
-              <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-                <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
-                <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
-                <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
-                <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
-              </div>
+              {i === 0 ? (
+                <div className='grid md:grid-cols-2 gap-8 items-start'>
+                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner flex flex-col gap-6'>
+                    {/* Boss Video */}
+                    <div
+                      className='relative cursor-pointer group'
+                      onClick={() => setIsBossVideoModalOpen(true)}
+                    >
+                      <video
+                        className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      >
+                        <source
+                          src='/projects/project-1/boss/bossvid.mp4'
+                          type='video/mp4'
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg'>
+                        <div className='bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-sm font-medium'>
+                          Click to enlarge
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
+                    <ImageGallery
+                      images={[
+                        {
+                          src: '/projects/project-1/boss/bossphase1.PNG',
+                          alt: 'Boss Phase 1 - Initial State',
+                        },
+                        {
+                          src: '/projects/project-1/boss/bossphase2.png',
+                          alt: 'Boss Phase 2 - Intermediate State',
+                        },
+                        {
+                          src: '/projects/project-1/boss/bossphase3.png',
+                          alt: 'Boss Phase 3 - Advanced State',
+                        },
+                        {
+                          src: '/projects/project-1/boss/bossphase4.PNG',
+                          alt: 'Boss Phase 4 - Final State',
+                        },
+                      ]}
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+                  <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
+                  <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
+                  <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
+                  <div className='bg-gray-200 dark:bg-gray-700 h-40 rounded-lg' />
+                </div>
+              )}
             </div>
           </ScrollFadeIn>
         ))}
@@ -476,6 +542,16 @@ export default function Project1Page() {
         src='/projects/project-1/videos/resourcemanagement1.mp4'
         isOpen={isResourceVideoModalOpen}
         onClose={() => setIsResourceVideoModalOpen(false)}
+      />
+      <VideoModal
+        src='/projects/project-1/videos/tension.mp4'
+        isOpen={isTensionVideoModalOpen}
+        onClose={() => setIsTensionVideoModalOpen(false)}
+      />
+      <VideoModal
+        src='/projects/project-1/boss/bossvid.mp4'
+        isOpen={isBossVideoModalOpen}
+        onClose={() => setIsBossVideoModalOpen(false)}
       />
     </div>
   );
