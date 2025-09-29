@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import NavLink from '@/components/NavLink';
 
 export default function Home() {
   const projects = [
     {
-      title: 'Project Title 1',
-      description: 'A short description of the first project.',
-      image: '/file.svg',
+      title: 'Turn-based Roguelite',
+      description: 'Department of Malicious Vagueness',
+      image: '/projects/project-1/thumbnails/project1thumbnail.png',
       link: '/projects/project-1',
     },
     {
