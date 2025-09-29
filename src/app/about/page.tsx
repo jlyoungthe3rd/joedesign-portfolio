@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import NavLink from '@/components/NavLink';
+import PhotoCarousel from '@/components/PhotoCarousel';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -11,7 +12,17 @@ export default function AboutPage() {
     <section className='py-5'>
       <div className='container mx-auto px-6'>
         <div className='grid md:grid-cols-2 gap-12 items-center'>
-          <div className='w-full max-w-sm h-80 bg-gray-200 dark:bg-gray-700 rounded-lg mx-auto' />
+          <PhotoCarousel
+            photos={[
+              '/about/me (1).jpg',
+              '/about/me (2).jpg',
+              '/about/me (3).jpg',
+              '/about/me (4).jpg',
+              '/about/me (5).jpg',
+            ]}
+            alt='Joe Young'
+            className='w-full max-w-sm h-80 mx-auto'
+          />
           <div className='text-center md:text-left'>
             <p className='mb-8'>
               I am an intention-driven Encounter Designer enthusiastic about
