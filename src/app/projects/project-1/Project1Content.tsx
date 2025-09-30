@@ -6,13 +6,10 @@ import BossStateDiagram from '@/components/diagrams/BossStateDiagram';
 import ScrollFadeIn from '@/components/ScrollFadeIn';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import ImageGallery, { ImageGalleryRef } from '@/components/ImageGallery';
-import VideoModal from '@/components/VideoModal';
+// Removed VideoModal usage – videos now play inline.
 
 export default function Project1Content() {
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [isResourceVideoModalOpen, setIsResourceVideoModalOpen] = useState(false);
-  const [isTensionVideoModalOpen, setIsTensionVideoModalOpen] = useState(false);
-  const [isBossVideoModalOpen, setIsBossVideoModalOpen] = useState(false);
+  // Inline videos: no modal state needed anymore.
   const galleryRef = useRef<ImageGalleryRef>(null);
 
   const handleScriptableObjectClick = () => {
@@ -181,42 +178,74 @@ export default function Project1Content() {
   // ===== Reusable Accessible Video Preview Component =====
   interface VideoPreviewProps {
     src: string;
-    onClick: () => void;
     label: string;
     className?: string;
+    autoPlayOnClick?: boolean;
   }
-  const VideoPreview = memo(function VideoPreview({ src, onClick, label, className = '' }: VideoPreviewProps) {
+  const VideoPreview = memo(function VideoPreview({ src, label, className = '', autoPlayOnClick = true }: VideoPreviewProps) {
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [showControls, setShowControls] = useState(false);
+
+    const togglePlay = () => {
+      const v = videoRef.current;
+      if (!v) return;
+      if (v.paused) {
+        v.play();
+        setIsPlaying(true);
+      } else {
+        v.pause();
+        setIsPlaying(false);
+      }
+    };
+
     return (
       <div className={`relative group ${className}`}>
-        <button
-          type='button'
-          onClick={onClick}
-          className='block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-lg'
-          aria-label={label}
-        >
+        <div className='relative'>
           <video
-            className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
+            ref={videoRef}
+            className='w-full h-auto rounded-lg shadow-lg transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500'
             loop
             muted
             playsInline
+            controls={showControls}
+            onClick={() => {
+              if (autoPlayOnClick) togglePlay();
+            }}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            aria-label={label}
           >
             <source src={src} type='video/mp4' />
             Your browser does not support the video tag.
           </video>
-          <span className='absolute inset-0 flex items-center justify-center rounded-lg transition-opacity'>
-            <span className='bg-black bg-opacity-60 group-hover:bg-opacity-80 rounded-full p-4 transition-all'>
-              <svg
-                className='w-8 h-8 text-white'
-                fill='currentColor'
-                viewBox='0 0 24 24'
-                role='img'
-                aria-hidden='true'
-              >
-                <path d='M8 5v14l11-7z' />
-              </svg>
-            </span>
-          </span>
-        </button>
+          {/* Overlay play button shown when paused */}
+          {!isPlaying && (
+            <button
+              type='button'
+              onClick={togglePlay}
+              className='absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 hover:bg-black/55 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500'
+              aria-label={`Play video: ${label}`}
+            >
+              <span className='bg-black/60 group-hover:bg-black/70 rounded-full p-4 transition-all'>
+                <svg className='w-8 h-8 text-white' fill='currentColor' viewBox='0 0 24 24' role='img' aria-hidden='true'>
+                  <path d='M8 5v14l11-7z' />
+                </svg>
+              </span>
+            </button>
+          )}
+          {/* Toggle controls button */}
+          <div className='absolute top-2 right-2 flex gap-2'>
+            <button
+              type='button'
+              onClick={() => setShowControls(c => !c)}
+              className='px-2 py-1 text-xs rounded bg-black/50 text-white hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400'
+              aria-label={showControls ? 'Hide native video controls' : 'Show native video controls'}
+            >
+              {showControls ? 'Hide UI' : 'Show UI'}
+            </button>
+          </div>
+        </div>
       </div>
     );
   });
@@ -384,8 +413,7 @@ export default function Project1Content() {
                     <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner w-full max-w-lg flex flex-col gap-6'>
                       <VideoPreview
                         src='/projects/project-1/videos/firstplayerexperience.mp4'
-                        onClick={() => setIsVideoModalOpen(true)}
-                        label='Play first player experience video'
+                        label='First player experience video'
                       />
                       <ImageGallery
                         customSize='small'
@@ -401,13 +429,11 @@ export default function Project1Content() {
                     <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner w-full max-w-lg flex flex-col gap-6'>
                       <VideoPreview
                         src='/projects/project-1/videos/resourcemanagement1.mp4'
-                        onClick={() => setIsResourceVideoModalOpen(true)}
-                        label='Play resource management example video'
+                        label='Resource management example video'
                       />
                       <VideoPreview
                         src='/projects/project-1/videos/tension.mp4'
-                        onClick={() => setIsTensionVideoModalOpen(true)}
-                        label='Play tension escalation example video'
+                        label='Tension escalation example video'
                       />
                     </div>
                   )}
@@ -466,8 +492,7 @@ export default function Project1Content() {
                     <div className='p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner flex flex-col justify-center'>
                       <VideoPreview
                         src='/projects/project-1/boss/bossvid.mp4'
-                        onClick={() => setIsBossVideoModalOpen(true)}
-                        label='Play boss encounter progression video'
+                        label='Boss encounter progression video'
                       />
                     </div>
                     
@@ -540,26 +565,7 @@ export default function Project1Content() {
       </ScrollFadeIn>
 
       <ScrollToTopButton />
-      <VideoModal
-        src='/projects/project-1/videos/firstplayerexperience.mp4'
-        isOpen={isVideoModalOpen}
-        onClose={() => setIsVideoModalOpen(false)}
-      />
-      <VideoModal
-        src='/projects/project-1/videos/resourcemanagement1.mp4'
-        isOpen={isResourceVideoModalOpen}
-        onClose={() => setIsResourceVideoModalOpen(false)}
-      />
-      <VideoModal
-        src='/projects/project-1/videos/tension.mp4'
-        isOpen={isTensionVideoModalOpen}
-        onClose={() => setIsTensionVideoModalOpen(false)}
-      />
-      <VideoModal
-        src='/projects/project-1/boss/bossvid.mp4'
-        isOpen={isBossVideoModalOpen}
-        onClose={() => setIsBossVideoModalOpen(false)}
-      />
+      {/* Removed modal instances; videos now play inline. */}
     </>
   );
 }
