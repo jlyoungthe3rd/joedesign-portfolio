@@ -1,19 +1,9 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 
 // This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // If the request is for the under-construction page, allow it
-  if (pathname.startsWith('/under-construction')) {
-    return NextResponse.next();
-  }
-
-  // Rewrite all other paths to the under-construction page
-  const url = request.nextUrl.clone();
-  url.pathname = '/under-construction';
-  return NextResponse.rewrite(url);
+export function middleware() {
+  // Allow all requests to pass through normally
+  return NextResponse.next();
 }
 
 // See "Matching Paths" below to learn more
