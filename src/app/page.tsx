@@ -16,13 +16,15 @@ export default function Home() {
             <div className='max-w-md w-full'>
               <Link href='/projects/project-1'>
                 <div className='text-center group cursor-pointer'>
-                  <div className='relative h-64 w-full mb-6 overflow-hidden rounded-lg shadow-lg'>
+                  <div className='mb-6'>
                     <Image
                       src='/projects/project-1/thumbnails/project1thumbnail.png'
                       alt='Turn-based Roguelite'
-                      fill
-                      style={{ objectFit: 'contain' }}
-                      className='group-hover:scale-105 transition-transform duration-300'
+                      width={800}
+                      height={450}
+                      sizes='(max-width: 640px) 100vw, 400px'
+                      priority
+                      className='mx-auto transition-transform duration-300 group-hover:scale-105 object-contain'
                     />
                   </div>
                   <h3 className='text-2xl font-bold mb-2'>
