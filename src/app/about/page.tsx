@@ -49,7 +49,7 @@ export default function AboutPage() {
                 href='/'
                 className='inline-block bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300'
               >
-                View Projects
+                View Project
               </Link>
             </div>
           </div>
