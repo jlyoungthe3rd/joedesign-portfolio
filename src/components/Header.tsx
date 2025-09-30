@@ -8,7 +8,12 @@ export default function Header() {
     <section className='bg-gray-50 dark:bg-gray-900 py-4 text-center'>
       <div className='container mx-auto px-6'>
         <Link href='/'>
-          <h1 className='text-4xl font-bold cursor-pointer'>JOE YOUNG</h1>
+          <h1
+            className='text-4xl font-bold cursor-pointer'
+            style={{ fontFamily: 'Sansation, sans-serif' }}
+          >
+            JOE YOUNG
+          </h1>
         </Link>
         <p className='mt-2 text-xl text-gray-600 dark:text-gray-300 font-serif'>
           Game Designer
