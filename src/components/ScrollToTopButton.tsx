@@ -6,7 +6,13 @@ export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
+    // Calculate if user has reached the bottom (with small buffer for better UX)
+    const scrollTop = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const bottomBuffer = 100; // Show button when within 100px of bottom
+
+    if (scrollTop + windowHeight >= docHeight - bottomBuffer) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
