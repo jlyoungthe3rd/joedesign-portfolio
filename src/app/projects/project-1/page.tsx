@@ -62,7 +62,8 @@ export default function Project1Page() {
           <br />
           <span className='italic'>
             Solution: We decided to not give players access to all abilities at
-            the start of the game.
+            the start of the game, creating a gated ability introduction via the
+            core progression loop to manage player information load.
           </span>
           <br />
           <br />
@@ -94,13 +95,13 @@ export default function Project1Page() {
             <li>Adaptation to enemy behaviors</li>
           </ul>
           <br />
-          <span className='underline'>Reflection:</span> I had originally
-          planned to have deathknells synergize with certain enemy types to
-          create more tense(hopefully sometimes fun) situations, but ran out of
-          time to implement this. I originally planned to do this once we had an
-          acceptable amount of enemies, but if I could do it again I would
-          design for this earlier on to have at least a few enemies that
-          synergized with deathknells.
+          <span className='underline'>Reflection:</span> I ran out of time to
+          implement deathknell synergy.
+          <br />
+          <span className='underline'>Lesson Learned:</span> If I could restart,
+          I would prioritize early vertical slice design to validate core
+          systemic synergies before scaling the enemy roster, mitigating
+          late-stage feature creep.
         </>
       ),
     },
@@ -114,8 +115,9 @@ export default function Project1Page() {
           </span>
           <br />
           <span className='italic'>
-            Solution: Enemies have a tell to let the player know which action is
-            coming up next so they can make informed choices
+            Solution: Implemented clear predictive UI feedback (text-based
+            &apos;tells&apos;) on enemies to ensure the player had the necessary
+            information hierarchy to make informed, tactical decisions
           </span>
           <br />
           <br />
@@ -160,18 +162,6 @@ export default function Project1Page() {
           give the player more dialogue. This acts as a reward if the player
           successfully completes phases while also implying to the player what
           state the boss is in
-        </>
-      ),
-    },
-    {
-      title: 'Combat Balancing',
-      description: (
-        <>
-          I used feedback from playtests to balance difficulty. We also went
-          with the decision to allow players to jump to the boss fight early if
-          they want, but with the trade-off of the boss being more difficult. It
-          took several iterations to figure out appropriate stat multipliers to
-          hit the level of difficulty that we wanted
         </>
       ),
     },
@@ -278,7 +268,6 @@ export default function Project1Page() {
                 <li>Encounter Progression</li>
                 <li>Art Direction & Communication</li>
                 <li>Narrative Climax</li>
-                <li>Combat Balancing</li>
               </ul>
             </div>
           </div>
@@ -363,6 +352,7 @@ export default function Project1Page() {
                       </div>
                     </div>
                     <ImageGallery
+                      customSize='small'
                       images={[
                         {
                           src: '/projects/project-1/difficulty/difficulty1.png',
@@ -468,10 +458,37 @@ export default function Project1Page() {
           <ScrollFadeIn key={i}>
             <div className='mb-8 border-b border-gray-200 dark:border-gray-700 pb-8'>
               <h3 className='text-2xl font-semibold mb-2'>{design.title}</h3>
-              <p className='mb-4'>{design.description}</p>
+              {i !== 2 && i !== 0 && (
+                <p className='mb-4'>{design.description}</p>
+              )}
               {i === 0 ? (
-                <div className='grid md:grid-cols-2 gap-8 items-start'>
-                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner flex flex-col gap-6'>
+                // Non-Linear State Design: text left, images right
+                <div className='grid md:grid-cols-2 gap-8 items-center'>
+                  <div>
+                    <p className='mb-4'>{design.description}</p>
+                  </div>
+                  <div className='flex flex-col items-center'>
+                    <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
+                      <ImageGallery
+                        customSize='medium'
+                        images={[
+                          {
+                            src: '/projects/project-1/boss/bossphase4.PNG',
+                            alt: 'Boss Phase 4 - Final State',
+                          },
+                          {
+                            src: '/projects/project-1/boss/bossphase3.png',
+                            alt: 'Boss Phase 3 - Advanced State',
+                          },
+                        ]}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : i === 1 ? (
+                // Encounter Progression: bossvid.mp4 and bossphase1.PNG
+                <div className='grid md:grid-cols-2 gap-8 items-stretch'>
+                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner flex flex-col justify-center'>
                     {/* Boss Video */}
                     <div
                       className='relative cursor-pointer group'
@@ -497,27 +514,36 @@ export default function Project1Page() {
                       </div>
                     </div>
                   </div>
-                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
+                  <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner flex flex-col justify-center'>
                     <ImageGallery
+                      customSize='extra-large'
                       images={[
                         {
                           src: '/projects/project-1/boss/bossphase1.PNG',
                           alt: 'Boss Phase 1 - Initial State',
                         },
-                        {
-                          src: '/projects/project-1/boss/bossphase2.png',
-                          alt: 'Boss Phase 2 - Intermediate State',
-                        },
-                        {
-                          src: '/projects/project-1/boss/bossphase3.png',
-                          alt: 'Boss Phase 3 - Advanced State',
-                        },
-                        {
-                          src: '/projects/project-1/boss/bossphase4.PNG',
-                          alt: 'Boss Phase 4 - Final State',
-                        },
                       ]}
                     />
+                  </div>
+                </div>
+              ) : i === 2 ? (
+                // Art Direction & Communication: text left, image right
+                <div className='grid md:grid-cols-2 gap-8 items-center'>
+                  <div>
+                    <p className='mb-4'>{design.description}</p>
+                  </div>
+                  <div className='flex flex-col items-center'>
+                    <div className='p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
+                      <ImageGallery
+                        customSize='extra-large'
+                        images={[
+                          {
+                            src: '/projects/project-1/boss/bossphase2.png',
+                            alt: 'Boss Phase 2 - Intermediate State',
+                          },
+                        ]}
+                      />
+                    </div>
                   </div>
                 </div>
               ) : (
