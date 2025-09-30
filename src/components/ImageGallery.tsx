@@ -36,13 +36,16 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(
       if (count === 1) {
         return 'grid grid-cols-1 justify-items-center gap-6 max-w-md mx-auto';
       } else if (count === 2) {
-        return 'grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto';
+        // Always show two thumbnails side-by-side (fits small screens incl. ~425px)
+        return 'grid grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto';
       } else if (count === 3) {
-        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto';
+        // Always show three thumbnails in a single row (requested for ~425px width)
+        return 'grid grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto';
       } else if (count <= 6) {
         return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-3xl mx-auto';
       } else {
-        return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto';
+        // Large sets (7+): slightly tighter gap at large screens to prevent overlap
+        return 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-4 max-w-4xl mx-auto';
       }
     };
 
@@ -59,6 +62,15 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(
         } else {
           return 'relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28';
         }
+      } else if (customSize === 'medium') {
+        // New: medium sizing (between default and large)
+        if (count === 1) {
+          return 'relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72';
+        } else if (count === 2) {
+          return 'relative w-40 h-40 sm:w-44 sm:h-44 lg:w-52 lg:h-52';
+        } else {
+          return 'relative w-32 h-32 sm:w-36 sm:h-36 lg:w-44 lg:h-44';
+        }
       } else if (customSize === 'large') {
         if (count === 1) {
           return 'relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80';
@@ -69,7 +81,8 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(
         }
       } else if (customSize === 'extra-large') {
         if (count === 1) {
-          return 'relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem]';
+          // Slightly reduced base size for very small screens (was w-80) to improve spacing at ~375px
+          return 'relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem]';
         } else if (count === 2) {
           return 'relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80';
         } else {
@@ -87,7 +100,8 @@ const ImageGallery = forwardRef<ImageGalleryRef, ImageGalleryProps>(
       } else if (count <= 6) {
         return 'relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32';
       } else {
-        return 'relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28';
+        // 7+ images: keep fixed sizing but slightly smaller at lg to reduce horizontal pressure
+        return 'relative w-20 h-20 sm:w-24 sm:h-24 lg:w-24 lg:h-24';
       }
     };
 

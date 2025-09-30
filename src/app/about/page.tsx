@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import { PersonJSONLD } from '@/components/StructuredData';
 import Link from 'next/link';
-import NavLink from '@/components/NavLink';
 import PhotoCarousel from '@/components/PhotoCarousel';
 
 export const metadata: Metadata = {
   title: 'About',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {
@@ -170,6 +171,34 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      <PersonJSONLD
+        detailed
+        includeSkills
+        skills={[
+          'Enemy Design',
+          'Boss Design',
+          'Balancing',
+          'Mechanics Design',
+          'Systems Design',
+          'Prototyping',
+          'Player Flow / Experience',
+          'Level Design (2D)',
+          'Narrative Design',
+          'Unity',
+          'Visual Scripting',
+          'Figma',
+          'C#',
+          'JavaScript',
+          'OOP',
+          'Data Structures',
+          'Design Patterns',
+          'Debugging',
+          'Jira',
+          'Git',
+          'Agile/Scrum',
+        ]}
+        page='/about'
+      />
     </section>
   );
 }

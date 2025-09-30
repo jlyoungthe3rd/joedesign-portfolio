@@ -1,5 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { PersonJSONLD } from '@/components/StructuredData';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 export default function Home() {
   return (
@@ -25,15 +31,16 @@ export default function Home() {
                   <p className='text-gray-600 dark:text-gray-400 mb-4'>
                     Department of Malicious Vagueness
                   </p>
-                  <div className='inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300'>
+                  <span className='inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300'>
                     View Project Details
-                  </div>
+                  </span>
                 </div>
               </Link>
             </div>
           </div>
         </div>
       </section>
+      <PersonJSONLD detailed page='' />
     </>
   );
 }

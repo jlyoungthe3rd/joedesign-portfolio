@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/config/siteConfig';
+import { WebPageJSONLD } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'Resume',
+  alternates: { canonical: '/resume' },
 };
 
 export default function ResumePage() {
@@ -59,6 +62,7 @@ export default function ResumePage() {
           </p>
         </div>
       </div>
+      <WebPageJSONLD name={`Resume - ${siteConfig.author}`} path='/resume' />
     </section>
   );
 }
