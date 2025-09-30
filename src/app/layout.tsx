@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   description: 'The best games for you',
   icons: {
-    icon: '/j-icon.svg',
+    icon: '/favicon.ico',
   },
 };
 
