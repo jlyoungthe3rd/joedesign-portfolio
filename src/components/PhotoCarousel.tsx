@@ -11,6 +11,7 @@ interface PhotoCarouselProps {
 
 export default function PhotoCarousel({ photos, alt, className = '' }: PhotoCarouselProps) {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [isFirstLoaded, setIsFirstLoaded] = useState(false);
 
   useEffect(() => {
     if (photos.length <= 1) return;
@@ -32,6 +33,9 @@ export default function PhotoCarousel({ photos, alt, className = '' }: PhotoCaro
 
   return (
     <div className={`relative overflow-hidden rounded-lg ${className}`}>
+      {!isFirstLoaded && (
+        <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 bg-[length:400%_100%]" aria-hidden="true" />
+      )}
       {photos.map((photo, index) => (
         <div
           key={photo}
@@ -43,9 +47,15 @@ export default function PhotoCarousel({ photos, alt, className = '' }: PhotoCaro
             src={photo}
             alt={`${alt} ${index + 1}`}
             fill
-            className="object-cover"
+            className={`object-cover transition-opacity duration-300 ${!isFirstLoaded && index === 0 ? 'opacity-0' : 'opacity-100'}`}
             sizes="(max-width: 768px) 100vw, 50vw"
             priority={index === 0}
+            onLoadingComplete={() => {
+              if (index === 0) {
+                // slight delay to avoid flash
+                requestAnimationFrame(() => setIsFirstLoaded(true));
+              }
+            }}
           />
         </div>
       ))}
