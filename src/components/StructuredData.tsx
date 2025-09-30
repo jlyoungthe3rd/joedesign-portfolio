@@ -10,6 +10,7 @@ interface PersonProps {
 }
 
 export function PersonJSONLD({ detailed = false, includeSkills = false, skills = [], page = '' }: PersonProps) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': 'Person',
