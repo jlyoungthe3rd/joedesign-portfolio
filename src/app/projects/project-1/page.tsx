@@ -56,14 +56,15 @@ export default function Project1Page() {
       description: (
         <>
           <span className='italic'>
-            Problem: We received feedback from playtest that players were
-            overwhelmed by having access to all abilities
+            <b>Problem:</b> We received feedback from playtest that players were
+            overwhelmed by having access to all abilities.
           </span>
           <br />
           <span className='italic'>
-            Solution: We decided to not give players access to all abilities at
-            the start of the game, creating a gated ability introduction via the
-            core progression loop to manage player information load.
+            <b>Solution:</b> We decided to not give players access to all
+            abilities at the start of the game, creating a gated ability
+            introduction via the core progression loop to manage player
+            information load.
           </span>
           <br />
           <br />
@@ -87,7 +88,7 @@ export default function Project1Page() {
           Designed specific enemy abilities and resistances that forced players
           to make critical{' '}
           <span className='font-bold'>resource management</span> choices during
-          combat encounters. This included:
+          combat encounters such as:
           <br />
           <ul className='list-disc list-inside'>
             <li>Enemies with deathknells</li>
@@ -95,13 +96,6 @@ export default function Project1Page() {
             <li>Adaptation to enemy behaviors</li>
           </ul>
           <br />
-          <span className='underline'>Reflection:</span> I ran out of time to
-          implement deathknell synergy.
-          <br />
-          <span className='underline'>Lesson Learned:</span> If I could restart,
-          I would prioritize early vertical slice design to validate core
-          systemic synergies before scaling the enemy roster, mitigating
-          late-stage feature creep.
         </>
       ),
     },
@@ -110,20 +104,21 @@ export default function Project1Page() {
       description: (
         <>
           <span className='italic'>
-            Problem: The player needs to know how to respond to what the enemy
-            is doing
+            <b>Problem:</b> The player needs to know how to respond to what the
+            enemy is doing.
           </span>
           <br />
           <span className='italic'>
-            Solution: Implemented clear predictive UI feedback (text-based
-            &apos;tells&apos;) on enemies to ensure the player had the necessary
-            information hierarchy to make informed, tactical decisions
+            <b>Solution:</b> Implemented clear predictive UI feedback
+            (text-based &apos;tells&apos;) on enemies to ensure the player had
+            the necessary information hierarchy to make informed, tactical
+            decisions.
           </span>
           <br />
           <br />
           We decided to have the enemies give tells through text that allowed
           players to understand what their intentions were so they could make
-          informed decisions
+          informed decisions.
         </>
       ),
     },
@@ -161,7 +156,7 @@ export default function Project1Page() {
           the decision to also use the phase transitions as an opportunity to
           give the player more dialogue. This acts as a reward if the player
           successfully completes phases while also implying to the player what
-          state the boss is in
+          state the boss is in.
         </>
       ),
     },
@@ -334,7 +329,6 @@ export default function Project1Page() {
                     >
                       <video
                         className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -345,9 +339,15 @@ export default function Project1Page() {
                         />
                         Your browser does not support the video tag.
                       </video>
-                      <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg'>
-                        <div className='bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-sm font-medium'>
-                          Click to enlarge
+                      <div className='absolute inset-0 flex items-center justify-center transition-opacity rounded-lg'>
+                        <div className='bg-black bg-opacity-60 rounded-full p-4 group-hover:bg-opacity-80 transition-all'>
+                          <svg
+                            className='w-8 h-8 text-white'
+                            fill='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path d='M8 5v14l11-7z' />
+                          </svg>
                         </div>
                       </div>
                     </div>
@@ -378,7 +378,6 @@ export default function Project1Page() {
                     >
                       <video
                         className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -389,9 +388,15 @@ export default function Project1Page() {
                         />
                         Your browser does not support the video tag.
                       </video>
-                      <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg'>
-                        <div className='bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-sm font-medium'>
-                          Click to enlarge
+                      <div className='absolute inset-0 flex items-center justify-center transition-opacity rounded-lg'>
+                        <div className='bg-black bg-opacity-60 rounded-full p-4 group-hover:bg-opacity-80 transition-all'>
+                          <svg
+                            className='w-8 h-8 text-white'
+                            fill='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path d='M8 5v14l11-7z' />
+                          </svg>
                         </div>
                       </div>
                     </div>
@@ -402,7 +407,6 @@ export default function Project1Page() {
                     >
                       <video
                         className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -413,9 +417,15 @@ export default function Project1Page() {
                         />
                         Your browser does not support the video tag.
                       </video>
-                      <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg'>
-                        <div className='bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-sm font-medium'>
-                          Click to enlarge
+                      <div className='absolute inset-0 flex items-center justify-center transition-opacity rounded-lg'>
+                        <div className='bg-black bg-opacity-60 rounded-full p-4 group-hover:bg-opacity-80 transition-all'>
+                          <svg
+                            className='w-8 h-8 text-white'
+                            fill='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path d='M8 5v14l11-7z' />
+                          </svg>
                         </div>
                       </div>
                     </div>
@@ -496,7 +506,6 @@ export default function Project1Page() {
                     >
                       <video
                         className='w-full h-auto rounded-lg shadow-lg group-hover:opacity-90 transition-opacity'
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -507,9 +516,15 @@ export default function Project1Page() {
                         />
                         Your browser does not support the video tag.
                       </video>
-                      <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg'>
-                        <div className='bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-sm font-medium'>
-                          Click to enlarge
+                      <div className='absolute inset-0 flex items-center justify-center transition-opacity rounded-lg'>
+                        <div className='bg-black bg-opacity-60 rounded-full p-4 group-hover:bg-opacity-80 transition-all'>
+                          <svg
+                            className='w-8 h-8 text-white'
+                            fill='currentColor'
+                            viewBox='0 0 24 24'
+                          >
+                            <path d='M8 5v14l11-7z' />
+                          </svg>
                         </div>
                       </div>
                     </div>
