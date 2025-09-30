@@ -64,21 +64,16 @@ export default function AboutPage() {
                 <b>Institution:</b> University of Washington <br />
                 <b>Degree/Program:</b> Game Design <br />
                 <b>Status:</b> Completed 2025 <br />
-                <b>Program Highlight:</b> Took what I learned about{' '}
-                <b>
-                  finding the fun, gameplay balancing, and player experience
-                </b>{' '}
-                to design and balance all enemy encounters and boss fights for a
-                turn-based roguelite using Unity and C#
               </p>
               <div className='border-t border-gray-200 dark:border-gray-700 my-6' />
               <h3 className='text-2xl font-semibold mb-2'>
-                Department of Malicious Vagueness
+                Capstone Project: Turn-Based Roguelite Video Game{' '}
               </h3>
               <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                <b>Capstone Project:</b> Turn-Based Roguelite Game <br />
-                <b>The Goal:</b> Create a playable build of an MVP for a video
-                game with a team of other designers <br />
+                <b>Title:</b> Department of Malicious Vagueness <br />
+                <b>The Goal:</b> Deliver a playable Minimum Viable Product (MVP)
+                with a focus on system integrity and calibrated difficulty curve{' '}
+                <br />
                 <b>Your Specific Role:</b> Served as Encounter Designer,
                 focusing on designing and implementing enemies and the boss
                 encounter
@@ -106,13 +101,10 @@ export default function AboutPage() {
                 <h3 className='text-xl font-semibold mb-2'>
                   Encounter & Combat Design
                 </h3>
-                {/*add link to enemy design area*/}
                 <ul className='text-sm list-disc list-inside inline-block text-left'>
-                  <li>Balancing</li>
+                  <li>Enemy Design</li>
                   <li>Boss Design</li>
-                  <li>Enemy Design</li>
-                  <li>Mechanics Design</li>
-                  <li>Enemy Design</li>
+                  <li>Balancing</li>
                   <li>Mechanics Design</li>
                 </ul>
               </div>
@@ -120,7 +112,6 @@ export default function AboutPage() {
                 <h3 className='text-xl font-semibold mb-2'>
                   Core Design Thinking
                 </h3>
-                {/*add link to boss design area*/}
                 <ul className='text-sm list-disc list-inside inline-block text-left'>
                   <li>Systems Design</li>
                   <li>Prototyping</li>
@@ -152,18 +143,14 @@ export default function AboutPage() {
                   <li>Unity</li>
                   <li>Visual Scripting</li>
                   <li>Figma</li>
-                  <li>Enemy Design</li>
-                  <li>Mechanics Design</li>
-                  <li>Enemy Design</li>
-                  <li>Mechanics Design</li>
                 </ul>
               </div>
               <div>
                 <h3 className='text-xl font-semibold mb-2'>Programming</h3>
                 <ul className='text-sm list-disc list-inside inline-block text-left'>
                   <li>C#</li>
-                  <li>Object-Oriented Programming</li>
-                  <li>Algorithms</li>
+                  <li>JavaScript(TypeScript)</li>
+                  <li>OOP</li>
                   <li>Data Structures</li>
                   <li>Design Patterns</li>
                   <li>Debugging</li>
