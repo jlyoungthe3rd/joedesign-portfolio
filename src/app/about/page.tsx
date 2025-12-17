@@ -32,7 +32,7 @@ export default function AboutPage() {
             <p className='mb-8'>
               I am a game designer who enjoys crafting experiences that stay
               with players, teach mechanics gracefully, and challenge them to
-              feel empowered. I've experience designing encounters where I
+              feel empowered. I&apos;ve experience designing encounters where I
               created, playtested, and balanced all enemy compositions and boss
               encounters. I utilize <b>Unity</b>, <b>C#</b>, <b>Figma</b>, and
               <b> Google Sheets</b>.
