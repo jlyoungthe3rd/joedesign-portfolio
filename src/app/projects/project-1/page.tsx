@@ -3,10 +3,6 @@ import Project1Content from './Project1Content';
 import { siteConfig } from '@/config/siteConfig';
 import { CreativeWorkJSONLD } from '@/components/StructuredData';
 
-// export const metadata: Metadata = {
-//   title: 'Project: DMV',
-// };
-
 export const metadata: Metadata = {
   title: 'Project: Department of Malicious Vagueness',
   description:

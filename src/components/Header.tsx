@@ -22,7 +22,6 @@ export default function Header() {
           <NavLink href='/'>Recent Project</NavLink>
           <NavLink href='/about'>About</NavLink>
           <NavLink href='/resume'>Resume</NavLink>
-          <NavLink href='/blog'>Blog</NavLink>
         </nav>
       </div>
     </section>
