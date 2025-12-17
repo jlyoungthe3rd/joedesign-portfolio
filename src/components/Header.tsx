@@ -5,7 +5,7 @@ import NavLink from '@/components/NavLink';
 
 export default function Header() {
   return (
-    <section className='bg-gray-50 dark:bg-gray-900 py-4 text-center'>
+    <section className='bg-gray-50 dark:bg-gray-900 py-8 text-center'>
       <div className='container mx-auto px-6'>
         <Link href='/'>
           <h1
@@ -19,7 +19,7 @@ export default function Header() {
           Game Designer
         </p>
         <nav className='mt-8 flex justify-center space-x-8'>
-          <NavLink href='/'>Portfolio</NavLink>
+          <NavLink href='/'>Recent Project</NavLink>
           <NavLink href='/about'>About</NavLink>
           <NavLink href='/resume'>Resume</NavLink>
           <NavLink href='/blog'>Blog</NavLink>
