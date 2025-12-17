@@ -6,25 +6,26 @@ import BossStateDiagram from '@/components/diagrams/BossStateDiagram';
 import ScrollFadeIn from '@/components/ScrollFadeIn';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 import ImageGallery, { ImageGalleryRef } from '@/components/ImageGallery';
-// Removed VideoModal usage – videos now play inline.
 
 export default function Project1Content() {
-  // Inline videos: no modal state needed anymore.
   const galleryRef = useRef<ImageGalleryRef>(null);
 
   const handleScriptableObjectClick = () => {
-    galleryRef.current?.openLightbox(2); // designframework3 is at index 2
+    galleryRef.current?.openLightbox(2);
   };
 
-  // Reordered so New Player Experience appears before the Framework section.
-  // Added 'kind' to avoid brittle index-based branching in rendering.
-  // Reusable tooltip-enabled term component
-  const GlossaryTerm = ({ term, definition }: { term: string; definition: string }) => (
-    <span className="relative font-semibold underline decoration-dotted cursor-help group">
+  const GlossaryTerm = ({
+    term,
+    definition,
+  }: {
+    term: string;
+    definition: string;
+  }) => (
+    <span className='relative font-semibold underline decoration-dotted cursor-help group'>
       {term}
       <span
-        role="tooltip"
-        className="pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full w-56 z-20 bg-gray-900 text-white text-xs rounded-md px-3 py-2 shadow-lg"
+        role='tooltip'
+        className='pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full w-56 z-20 bg-gray-900 text-white text-xs rounded-md px-3 py-2 shadow-lg'
       >
         {definition}
       </span>
@@ -38,16 +39,18 @@ export default function Project1Content() {
       description: (
         <>
           <p className='mb-3'>
-            <b>Problem:</b> Early builds exposed every ability immediately, producing option paralysis and longer first-turn dwell time.
+            <b>Problem:</b> Early builds exposed every ability immediately,
+            producing option paralysis and longer first-turn dwell time.
           </p>
           <p className='mb-3'>
-            <b>Insight:</b> Cognitive overload reduced experimentation and undermined early retention signals.
+            <b>Insight:</b> Player more likely to not experiment due to cognitive overload.
           </p>
-            <p className='mb-3'>
-            <b>Solution:</b> Layered ability unlocks + tutorial encounter + enemy queue preview to externalize upcoming threats.
+          <p className='mb-3'>
+            <b>Solution:</b> Layered ability unlocks + tutorial encounter +
+            enemy queue preview to externalize upcoming threats.
           </p>
           <ul className='list-disc list-inside mb-3'>
-            <li>Gated unlock curve (reduces initial cognitive surface)</li>
+            <li>Gated unlock curve</li>
             <li>Tutorial encounter with tightly scoped verbs</li>
             <li>Enemy queue: future intent surfaced upfront</li>
           </ul>
@@ -60,16 +63,36 @@ export default function Project1Content() {
       description: (
         <>
           <p className='mb-3'>
-            Designed specific enemy abilities & resistances to force meaningful <span className='font-bold'>resource management</span> trade–offs.
+            Designed specific enemy abilities & resistances to force meaningful{' '}
+            <span className='font-bold'>resource management</span> trade–offs.
           </p>
           <ul className='list-disc list-inside mb-3'>
-            <li>Player may choose low-impact removal (no trigger) to conserve limited resources.</li>
-            <li><b><GlossaryTerm term='Deathknell:' definition='A conditional trigger that produces a beneficial swing (cleanse / advantage) if timed correctly.' /></b> Possible cleanse & boost if timed; penalty if ignored.</li>
-            <li><b>Non-mitigable states:</b> Forces adaptive sequencing of ability usage.</li>
-            <li><b>Behavior shifts:</b> Later enemies punish static planning.</li>
+            <li>
+              Player may choose low-impact removal (no trigger) to conserve
+              limited resources.
+            </li>
+            <li>
+              <b>
+                <GlossaryTerm
+                  term='Deathknell:'
+                  definition='A conditional trigger that produces a beneficial swing (cleanse / advantage) if timed correctly.'
+                />
+              </b>{' '}
+              Possible cleanse & boost if timed; penalty if ignored.
+            </li>
+            <li>
+              <b>Non-mitigable states:</b> Forces adaptive sequencing of ability
+              usage.
+            </li>
+            <li>
+              <b>Behavior shifts:</b> Later enemies punish static planning.
+            </li>
           </ul>
           <p className='text-sm text-gray-500 dark:text-gray-400'>
-            <i>Skill Expression: Correct high-impact trade decisions improved from 30% → 60%.</i>
+            <i>
+              Skill Expression: Correct high-impact trade decisions improved
+              from 30% → 60%.
+            </i>
           </p>
         </>
       ),
@@ -80,13 +103,23 @@ export default function Project1Content() {
       description: (
         <>
           <p className='mb-3'>
-            <b>Problem:</b> Players didn&apos;t fully understand causal links between enemy actions and resource changes.
+            <b>Problem:</b> Players didn&apos;t fully understand causal links
+            between enemy actions and resource changes.
           </p>
           <p className='mb-3'>
-            <b>Solution:</b> Added per-action numeric feedback & predictive intent using <GlossaryTerm term='Intent Tell' definition='A pre-action indicator (text/icon) communicating what an enemy will do next to aid tactical planning.' /> messaging plus severity-coded icons.
+            <b>Solution:</b> Added per-action numeric feedback & predictive
+            intent using{' '}
+            <GlossaryTerm
+              term='Intent Tell'
+              definition='A pre-action indicator (text/icon) communicating what an enemy will do next to aid tactical planning.'
+            />{' '}
+            messaging plus severity-coded icons.
           </p>
           <p className='text-sm text-gray-500 dark:text-gray-400'>
-            <i>Result: “What happened?” inquiries dropped; intent prediction accuracy improved.</i>
+            <i>
+              Result: “What happened?” inquiries dropped; intent prediction
+              accuracy improved.
+            </i>
           </p>
         </>
       ),
@@ -97,7 +130,8 @@ export default function Project1Content() {
       description: (
         <>
           <p className='mb-3'>
-            Authored a reusable documentation + data schema enabling rapid enemy prototyping and consistent balancing across tiers.
+            Authored a reusable documentation + data schema enabling rapid enemy
+            prototyping and consistent balancing across tiers.
           </p>
           <ul className='list-disc list-inside mb-3'>
             <li>Unified ability template (Scriptable Object fields)</li>
@@ -123,16 +157,19 @@ export default function Project1Content() {
       title: 'Non-Linear State Design',
       description: (
         <>
-            <p className='mb-3'>
-              Multi-state architecture: players choose initial engagement order, which gives replay incentive.
-            </p>
+          <p className='mb-3'>
+            Multi-state architecture: players choose initial engagement order,
+            which gives replay incentive.
+          </p>
           <ul className='list-disc list-inside mb-3'>
             <li>State A(Enraged): Strong resource pressure</li>
             <li>State B(Pacified): Slow down pacing and intensity</li>
             <li>State C(Neutral): Randomized resource pressure</li>
           </ul>
           <p className='text-sm text-gray-500 dark:text-gray-400'>
-            <i>Result: More positive player sentiment; better player retention.</i>
+            <i>
+              Result: More positive player sentiment; better player retention.
+            </i>
           </p>
         </>
       ),
@@ -142,7 +179,8 @@ export default function Project1Content() {
       description: (
         <>
           <p className='mb-3'>
-            Designed phase escalation to sync resource depletion with narrative stakes—minimizing trivial end-phases.
+            Designed phase escalation to sync resource depletion with narrative
+            stakes—minimizing trivial end-phases.
           </p>
           <ul className='list-disc list-inside mb-3'>
             <li>Phase 1: Establish baseline pacing & economy</li>
@@ -150,7 +188,10 @@ export default function Project1Content() {
             <li>Phase 3: Compression—forces mastery-level prioritization</li>
           </ul>
           <p className='text-sm text-gray-500 dark:text-gray-400'>
-            <i>Result: Average failure point shifted from Phase 1 to Phase 3 indicating healthier curve.</i>
+            <i>
+              Result: Average failure point shifted from Phase 1 to Phase 3
+              indicating healthier curve.
+            </i>
           </p>
         </>
       ),
@@ -160,7 +201,9 @@ export default function Project1Content() {
       description: (
         <>
           <p className='mb-3'>
-            Worked with artist to ensure that phase transitions delivered diegetic narrative cues aligned with mechanical escalation—rewarding survival with context.
+            Worked with artist to ensure that phase transitions delivered
+            diegetic narrative cues aligned with mechanical escalation—rewarding
+            survival with context.
           </p>
           <ul className='list-disc list-inside mb-3'>
             <li>Transition stingers(art) reinforce boss emotional state</li>
@@ -168,7 +211,10 @@ export default function Project1Content() {
             <li>Ambient audio layering increases perceived tension</li>
           </ul>
           <p className='text-sm text-gray-500 dark:text-gray-400'>
-            <i>Result: Improved player understanding of boss mechanics and emotional states.</i>
+            <i>
+              Result: Improved player understanding of boss mechanics and
+              emotional states.
+            </i>
           </p>
         </>
       ),
@@ -182,7 +228,12 @@ export default function Project1Content() {
     className?: string;
     autoPlayOnClick?: boolean;
   }
-  const VideoPreview = memo(function VideoPreview({ src, label, className = '', autoPlayOnClick = true }: VideoPreviewProps) {
+  const VideoPreview = memo(function VideoPreview({
+    src,
+    label,
+    className = '',
+    autoPlayOnClick = true,
+  }: VideoPreviewProps) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [showControls, setShowControls] = useState(false);
@@ -228,7 +279,13 @@ export default function Project1Content() {
               aria-label={`Play video: ${label}`}
             >
               <span className='bg-black/60 group-hover:bg-black/70 rounded-full p-4 transition-all'>
-                <svg className='w-8 h-8 text-white' fill='currentColor' viewBox='0 0 24 24' role='img' aria-hidden='true'>
+                <svg
+                  className='w-8 h-8 text-white'
+                  fill='currentColor'
+                  viewBox='0 0 24 24'
+                  role='img'
+                  aria-hidden='true'
+                >
                   <path d='M8 5v14l11-7z' />
                 </svg>
               </span>
@@ -238,9 +295,13 @@ export default function Project1Content() {
           <div className='absolute top-2 right-2 flex gap-2'>
             <button
               type='button'
-              onClick={() => setShowControls(c => !c)}
+              onClick={() => setShowControls((c) => !c)}
               className='px-2 py-1 text-xs rounded bg-black/50 text-white hover:bg-black/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400'
-              aria-label={showControls ? 'Hide native video controls' : 'Show native video controls'}
+              aria-label={
+                showControls
+                  ? 'Hide native video controls'
+                  : 'Show native video controls'
+              }
             >
               {showControls ? 'Hide UI' : 'Show UI'}
             </button>
@@ -253,13 +314,16 @@ export default function Project1Content() {
   // Table of Contents sections (enemy + boss)
   const tableOfContents = [
     { id: 'enemy-design', label: 'Enemy Design' },
-    ...enemyDesigns.map(d => ({ id: slugify(d.title), label: d.title })),
+    ...enemyDesigns.map((d) => ({ id: slugify(d.title), label: d.title })),
     { id: 'boss-design', label: 'Boss Design' },
-    ...bossDesigns.map(d => ({ id: slugify(d.title), label: d.title })),
+    ...bossDesigns.map((d) => ({ id: slugify(d.title), label: d.title })),
   ];
 
   function slugify(str: string) {
-    return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    return str
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
   }
 
   return (
@@ -269,17 +333,23 @@ export default function Project1Content() {
           <div>
             <h1 className='text-4xl font-bold'>
               Department of Malicious Vagueness
-              <span className='ml-2 align-middle rounded bg-indigo-100 dark:bg-indigo-800/60 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:text-indigo-200'>MVP</span>
+              <span className='ml-2 align-middle rounded bg-indigo-100 dark:bg-indigo-800/60 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:text-indigo-200'>
+                MVP
+              </span>
             </h1>
             <p className='mt-4'>
-              The Department of Malicious Vagueness is a social roguelite combining elements from <i>Papers Please</i> and <i>Slay the Spire</i> set in an
-              afterlife DMV where doing your job too well gets you promoted out of existence and slacking off gets you fired into oblivion. Balance
-              bureaucratic efficiency with quiet rebellion as you manipulate metaphysical paperwork, while maintaining your existence in purgatory.
+              The Department of Malicious Vagueness is a social roguelite
+              combining elements from <i>Papers Please</i> and{' '}
+              <i>Slay the Spire</i> set in an afterlife DMV where doing your job
+              too well gets you promoted out of existence and slacking off gets
+              you fired into oblivion.
               <br />
               <br />
-              As the Encounter Designer, I designed and implemented an enemy roster with mechanics and behaviors that reinforced core narrative themes
-              and advanced player skill progression. This culminated in a multi-phase boss encounter that successfully tested the player&apos;s mastery of
-              all game systems.
+              As the Encounter Designer, I designed and implemented a
+              roster of enemies with mechanics and behaviors that reinforce narrative
+              themes and advanced player skill progression. This culminates in a
+              multi-phase boss encounter that tests the
+              player&apos;s mastery of game systems.
             </p>
             <ul className='text-gray-600 dark:text-gray-400 mt-2 list-disc list-inside'>
               <li>
@@ -318,29 +388,33 @@ export default function Project1Content() {
 
       <ScrollFadeIn>
         <div className='bg-gray-100 dark:bg-gray-800 p-8 rounded-lg mb-12'>
-          <h2 className='text-3xl font-bold text-center mb-4'>Responsibilities</h2>
+          <h2 className='text-3xl font-bold text-center mb-4'>
+            Responsibilities
+          </h2>
           <div className='grid md:grid-cols-2 gap-8 text-center'>
             <div>
               <a href='#enemy-design'>
-                <h3 className='text-2xl font-semibold mb-2 underline'>Enemy Design</h3>
+                <h3 className='text-2xl font-semibold mb-2 underline'>
+                  Enemy Design
+                </h3>
               </a>
               <ul className='list-disc list-inside inline-block text-left'>
-                <li>Developed Enemy Design Framework</li>
-                <li>Created enemy and boss documentation</li>
-                <li>Difficulty Pacing and Introduction</li>
-                <li>Resource and Tension Management</li>
-                <li>Implemented Visual Tells</li>
+                <li>Lead development of Enemy Design Framework</li>
+                <li>Owned enemy and boss documentation</li>
+                <li>Balanced Difficulty Pacing</li>
+                <li>Designed Resource and Tension Management</li>
               </ul>
             </div>
             <div>
               <a href='#boss-design'>
-                <h3 className='text-2xl font-semibold mb-2 underline'>Boss Design</h3>
+                <h3 className='text-2xl font-semibold mb-2 underline'>
+                  Boss Design
+                </h3>
               </a>
               <ul className='list-disc list-inside inline-block text-left'>
-                <li>Non-Linear State Design</li>
-                <li>Encounter Progression</li>
-                <li>Art Direction & Communication</li>
-                <li>Narrative Climax</li>
+                <li>Lead design of non-linear multi-phase boss encounter</li>
+                <li>Assisted in Art Direction</li>
+                <li>Assisted in Narrative Design</li>
               </ul>
             </div>
           </div>
@@ -350,21 +424,38 @@ export default function Project1Content() {
       {/* MVP Scope & Constraints Callout */}
       <ScrollFadeIn>
         <section className='mb-12 border border-yellow-300/40 dark:border-yellow-400/30 bg-yellow-50/40 dark:bg-yellow-900/10 p-6 rounded-lg'>
-          <h2 className='text-lg font-semibold mb-2'>MVP Scope & Constraints</h2>
+          <h2 className='text-lg font-semibold mb-2'>
+            MVP Scope & Constraints
+          </h2>
           <ul className='list-disc list-inside text-sm space-y-1'>
-            <li><span className='font-semibold'>Included:</span> Core enemy roster slice, ability gating curve, resource/tension pacing, single multi-phase boss.</li>
-            <li><span className='font-semibold'>Deferred:</span> Meta-progression systems, extended analytics UI, additional boss variants, advanced VFX & polish layers.</li>
-            <li><span className='font-semibold'>Goal:</span> Validate player learning cadence & encounter loop clarity before expanding content breadth.</li>
+            <li>
+              <span className='font-semibold'>Included:</span> Core enemy roster
+              slice, ability gating curve, resource/tension pacing, single
+              multi-phase boss.
+            </li>
+            <li>
+              <span className='font-semibold'>Deferred:</span> Meta-progression
+              systems, extended analytics UI, additional boss variants, advanced
+              VFX & polish layers.
+            </li>
+            <li>
+              <span className='font-semibold'>Goal:</span> Validate player
+              learning cadence & encounter loop clarity before expanding content
+              breadth.
+            </li>
           </ul>
         </section>
       </ScrollFadeIn>
 
       {/* Table of Contents */}
       <ScrollFadeIn>
-        <nav aria-label='Page sections' className='mb-16 border border-gray-200 dark:border-gray-700 rounded-lg p-6 bg-white/60 dark:bg-black/40 backdrop-blur-sm'>
-          <h2 className='text-xl font-semibold mb-3'>On this page</h2>
+        <nav
+          aria-label='Page sections'
+          className='mb-16 border border-gray-200 dark:border-gray-700 rounded-lg p-6 bg-white/60 dark:bg-black/40 backdrop-blur-sm'
+        >
+          <h2 className='text-xl font-semibold mb-3'>Navigate To</h2>
           <ul className='grid sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2 text-sm'>
-            {tableOfContents.map(item => (
+            {tableOfContents.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
@@ -386,9 +477,14 @@ export default function Project1Content() {
           const slug = slugify(design.title);
           return (
             <ScrollFadeIn key={design.title}>
-              <div id={slug} className='grid lg:grid-cols-2 gap-8 items-center mb-8 border-b border-gray-200 dark:border-gray-700 pb-8'>
+              <div
+                id={slug}
+                className='grid lg:grid-cols-2 gap-8 items-center mb-8 border-b border-gray-200 dark:border-gray-700 pb-8'
+              >
                 <div>
-                  <h3 className='text-2xl font-semibold mb-2'>{design.title}</h3>
+                  <h3 className='text-2xl font-semibold mb-2'>
+                    {design.title}
+                  </h3>
                   {design.description}
                 </div>
                 <div className='flex flex-col items-center'>
@@ -397,14 +493,38 @@ export default function Project1Content() {
                       <ImageGallery
                         ref={galleryRef}
                         images={[
-                          { src: '/projects/project-1/designframework/designframework1.png', alt: 'Framework: Documentation overview page' },
-                          { src: '/projects/project-1/designframework/designframework2.png', alt: 'Framework: Tier classification sheet' },
-                          { src: '/projects/project-1/designframework/designframework3.png', alt: 'Framework: Ability template fields' },
-                          { src: '/projects/project-1/designframework/designframework4.png', alt: 'Framework: Balance guidelines table' },
-                          { src: '/projects/project-1/designframework/designframework5.png', alt: 'Framework: Implementation guide reference' },
-                          { src: '/projects/project-1/designframework/designframework6.png', alt: 'Framework: Test matrix' },
-                          { src: '/projects/project-1/designframework/designframework7.png', alt: 'Framework: Advanced concepts section' },
-                          { src: '/projects/project-1/designframework/designframework8.png', alt: 'Framework: Final implementation artifact' },
+                          {
+                            src: '/projects/project-1/designframework/designframework1.png',
+                            alt: 'Framework: Documentation overview page',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework2.png',
+                            alt: 'Framework: Tier classification sheet',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework3.png',
+                            alt: 'Framework: Ability template fields',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework4.png',
+                            alt: 'Framework: Balance guidelines table',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework5.png',
+                            alt: 'Framework: Implementation guide reference',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework6.png',
+                            alt: 'Framework: Test matrix',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework7.png',
+                            alt: 'Framework: Advanced concepts section',
+                          },
+                          {
+                            src: '/projects/project-1/designframework/designframework8.png',
+                            alt: 'Framework: Final implementation artifact',
+                          },
                         ]}
                       />
                     </div>
@@ -418,9 +538,18 @@ export default function Project1Content() {
                       <ImageGallery
                         customSize='small'
                         images={[
-                          { src: '/projects/project-1/difficulty/difficulty1.png', alt: 'Difficulty Pacing: Initial player experience screen' },
-                          { src: '/projects/project-1/difficulty/difficulty2.png', alt: 'Difficulty Pacing: Gradual ability unlock progression' },
-                          { src: '/projects/project-1/difficulty/difficulty3.png', alt: 'Difficulty Pacing: Later encounter with increased challenge' },
+                          {
+                            src: '/projects/project-1/difficulty/difficulty1.png',
+                            alt: 'Difficulty Pacing: Initial player experience screen',
+                          },
+                          {
+                            src: '/projects/project-1/difficulty/difficulty2.png',
+                            alt: 'Difficulty Pacing: Gradual ability unlock progression',
+                          },
+                          {
+                            src: '/projects/project-1/difficulty/difficulty3.png',
+                            alt: 'Difficulty Pacing: Later encounter with increased challenge',
+                          },
                         ]}
                       />
                     </div>
@@ -441,8 +570,14 @@ export default function Project1Content() {
                     <div className='p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-inner'>
                       <ImageGallery
                         images={[
-                          { src: '/projects/project-1/tells/tell1.PNG', alt: 'Enemy action intent text tell example' },
-                          { src: '/projects/project-1/tells/tells2.PNG', alt: 'Player decision making influenced by enemy intent UI' },
+                          {
+                            src: '/projects/project-1/tells/tell1.PNG',
+                            alt: 'Enemy action intent text tell example',
+                          },
+                          {
+                            src: '/projects/project-1/tells/tells2.PNG',
+                            alt: 'Player decision making influenced by enemy intent UI',
+                          },
                         ]}
                       />
                     </div>
@@ -458,13 +593,16 @@ export default function Project1Content() {
         <h2 id='boss-design' className='text-4xl font-bold text-center mb-8'>
           Boss Design
         </h2>
-  {bossDesigns.map((design, i) => {
+        {bossDesigns.map((design, i) => {
           const slug = slugify(design.title);
           return (
             <ScrollFadeIn key={design.title}>
-              <div id={slug} className='mb-8 border-b border-gray-200 dark:border-gray-700 pb-8'>
+              <div
+                id={slug}
+                className='mb-8 border-b border-gray-200 dark:border-gray-700 pb-8'
+              >
                 <h3 className='text-2xl font-semibold mb-2'>{design.title}</h3>
-                {(i === 1) && <div className='mb-4'>{design.description}</div>}
+                {i === 1 && <div className='mb-4'>{design.description}</div>}
                 {i === 0 && (
                   <div className='grid lg:grid-cols-2 gap-8 items-center'>
                     <div>
@@ -476,11 +614,19 @@ export default function Project1Content() {
                           <ImageGallery
                             customSize='small'
                             images={[
-                              { src: '/projects/project-1/boss/bossphase4.PNG', alt: 'Boss Phase 4 - Final State (Combined Pressure Apex)' },
-                              { src: '/projects/project-1/boss/bossphase3.png', alt: 'Boss Phase 3 - Advanced State (Escalated Patterns)' },
+                              {
+                                src: '/projects/project-1/boss/bossphase4.PNG',
+                                alt: 'Boss Phase 4 - Final State (Combined Pressure Apex)',
+                              },
+                              {
+                                src: '/projects/project-1/boss/bossphase3.png',
+                                alt: 'Boss Phase 3 - Advanced State (Escalated Patterns)',
+                              },
                             ]}
                           />
-                          <figcaption className='mt-2 text-xs text-gray-500 dark:text-gray-400'>Boss phases are chosen by the player</figcaption>
+                          <figcaption className='mt-2 text-xs text-gray-500 dark:text-gray-400'>
+                            Boss phases are chosen by the player
+                          </figcaption>
                         </figure>
                       </div>
                     </div>
@@ -495,7 +641,6 @@ export default function Project1Content() {
                         label='Boss encounter progression video'
                       />
                     </div>
-                    
                   </div>
                 )}
                 {i === 2 && (
@@ -510,9 +655,18 @@ export default function Project1Content() {
                           <ImageGallery
                             customSize='small'
                             images={[
-                              { src: '/projects/project-1/boss/Nepo-Baby-Calm.PNG', alt: 'Nepo Baby boss visual – Calm state palette and expression' },
-                              { src: '/projects/project-1/boss/Nepo-Baby-Neutral.PNG', alt: 'Nepo Baby boss visual – Neutral transitional state' },
-                              { src: '/projects/project-1/boss/Nepo-Baby-Angry.PNG', alt: 'Nepo Baby boss visual – Angry/enraged state with intensified palette' },
+                              {
+                                src: '/projects/project-1/boss/Nepo-Baby-Calm.PNG',
+                                alt: 'Nepo Baby boss visual – Calm state palette and expression',
+                              },
+                              {
+                                src: '/projects/project-1/boss/Nepo-Baby-Neutral.PNG',
+                                alt: 'Nepo Baby boss visual – Neutral transitional state',
+                              },
+                              {
+                                src: '/projects/project-1/boss/Nepo-Baby-Angry.PNG',
+                                alt: 'Nepo Baby boss visual – Angry/enraged state with intensified palette',
+                              },
                             ]}
                           />
                         </figure>
@@ -528,26 +682,44 @@ export default function Project1Content() {
 
       {/* Flow & State Diagrams Section */}
       <section aria-labelledby='encounter-flow-heading' className='mt-20 mb-24'>
-        <h2 id='encounter-flow-heading' className='text-3xl font-bold text-center mb-10'>Encounter Flow & Boss State Diagrams</h2>
+        <h2
+          id='encounter-flow-heading'
+          className='text-3xl font-bold text-center mb-10'
+        >
+          Encounter Flow & Boss State Diagrams
+        </h2>
         <FlowDiagram />
         <BossStateDiagram />
       </section>
 
       {/* Glossary Section */}
-      <section aria-labelledby='glossary-heading' className='mb-24 border border-gray-200 dark:border-gray-700 rounded-lg p-6 bg-white/60 dark:bg-black/40 backdrop-blur-sm'>
-        <h2 id='glossary-heading' className='text-2xl font-semibold mb-4'>Glossary</h2>
+      <section
+        aria-labelledby='glossary-heading'
+        className='mb-24 border border-gray-200 dark:border-gray-700 rounded-lg p-6 bg-white/60 dark:bg-black/40 backdrop-blur-sm'
+      >
+        <h2 id='glossary-heading' className='text-2xl font-semibold mb-4'>
+          Glossary
+        </h2>
         <dl className='space-y-4 text-sm'>
           <div>
             <dt className='font-semibold flex items-center gap-2'>
               <span className='underline decoration-dotted'>Deathknell</span>
             </dt>
-            <dd className='ml-1 mt-1 text-gray-600 dark:text-gray-400'>A conditional enemy or effect trigger that grants a positive swing (e.g., cleanse, momentum shift) only if removed or activated at a timing window; punishes premature or negligent interaction.</dd>
+            <dd className='ml-1 mt-1 text-gray-600 dark:text-gray-400'>
+              A conditional enemy or effect trigger that grants a positive swing
+              (e.g., cleanse, momentum shift) only if removed or activated at a
+              timing window; punishes premature or negligent interaction.
+            </dd>
           </div>
           <div>
             <dt className='font-semibold flex items-center gap-2'>
               <span className='underline decoration-dotted'>Intent Tell</span>
             </dt>
-            <dd className='ml-1 mt-1 text-gray-600 dark:text-gray-400'>A pre-action indicator (text/icon/value) that communicates the enemy&apos;s upcoming behavior to enable proactive planning and reduce unexplained feedback loops.</dd>
+            <dd className='ml-1 mt-1 text-gray-600 dark:text-gray-400'>
+              A pre-action indicator (text/icon/value) that communicates the
+              enemy&apos;s upcoming behavior to enable proactive planning and
+              reduce unexplained feedback loops.
+            </dd>
           </div>
         </dl>
       </section>
@@ -555,11 +727,20 @@ export default function Project1Content() {
       <ScrollFadeIn>
         <section className='mb-16 border border-indigo-300/40 dark:border-indigo-500/30 bg-indigo-50/40 dark:bg-indigo-900/10 p-6 rounded-lg'>
           <h2 className='text-2xl font-semibold mb-4'>Future Improvements</h2>
-          <p className='text-xs text-gray-500 dark:text-gray-400 italic mb-3'>Items below were intentionally deferred beyond MVP scope to accelerate validation.</p>
+          <p className='text-xs text-gray-500 dark:text-gray-400 italic mb-3'>
+            Items below were intentionally deferred beyond MVP scope to
+            accelerate validation.
+          </p>
           <ul className='list-disc list-inside space-y-1 text-sm'>
-            <li>Automated difficulty scaler refining enemy composition weightings</li>
-            <li>Expanded tell system: layered audio cues for high-severity moves</li>
-            <li>Post-encounter analytics screen surfacing resource efficiency</li>
+            <li>
+              Automated difficulty scaler refining enemy composition weightings
+            </li>
+            <li>
+              Expanded tell system: layered audio cues for high-severity moves
+            </li>
+            <li>
+              Post-encounter analytics screen surfacing resource efficiency
+            </li>
           </ul>
         </section>
       </ScrollFadeIn>
