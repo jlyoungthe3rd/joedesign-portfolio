@@ -1,12 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import { Quote } from './Quote';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
   return (
     <footer className='bg-gray-100 dark:bg-gray-900 py-2'>
       <div className='container mx-auto px-6 text-center'>
+        <div className='p-2'>
+          <Quote />
+        </div>
         <div className='flex justify-center space-x-6'>
           <Link
             href='https://www.linkedin.com/in/joelewisyoung/'
