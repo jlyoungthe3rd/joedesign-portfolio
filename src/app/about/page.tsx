@@ -25,23 +25,22 @@ export default function AboutPage() {
             className='w-full max-w-sm h-80 mx-auto'
           />
           <div className='text-center md:text-left'>
+            <h3 className='py-5 text-center font-bold text-l'>
+              Universe-Expander &bull; Collaboration-Catalyst &bull;
+              Experience-Designer
+            </h3>
             <p className='mb-8'>
-              I am an intention-driven Encounter Designer enthusiastic about
-              crafting compelling challenges that effectively teach game
-              mechanics and inspire players to experiment with systems,
-              ultimately allowing them to display their mastery. My primary
-              experience comes from designing a <b>turn-based roguelite</b>,
-              where I created, playtested, and balanced all enemy compositions
-              and boss encounters. For that project, I used <b>Unity</b>,{' '}
-              <b>C#</b>, <b>Figma</b>, and Google Sheets. I thrive in
-              collaborative environments alongside other passionate creatives
-              who welcome feedback and actively seek opportunities for shared
-              learning.
+              I am a game designer who enjoys crafting experiences that stay
+              with players, teach mechanics gracefully, and challenge them to
+              feel empowered. I've experience designing encounters where I
+              created, playtested, and balanced all enemy compositions and boss
+              encounters. I utilize <b>Unity</b>, <b>C#</b>, <b>Figma</b>, and
+              <b> Google Sheets</b>.
             </p>
             <div className='flex justify-center gap-4'>
               <Link
                 href='/resume'
-                className='inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300'
+                className='inline-block bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300'
               >
                 View Resume
               </Link>
@@ -63,28 +62,33 @@ export default function AboutPage() {
             <div className='text-center'>
               <p className='text-gray-600 dark:text-gray-400 mb-4'>
                 <b>Institution:</b> University of Washington <br />
-                <b>Degree/Program:</b> Game Design <br />
-                <b>Status:</b> Completed 2025 <br />
+                <b>Program:</b> Game Design <br />
+                <br></br>
+                <b>Institution:</b> Armstrong Atlantic State University <br />
+                <b>Program:</b> Computer Science <br />
               </p>
               <div className='border-t border-gray-200 dark:border-gray-700 my-6' />
-              <h3 className='text-2xl font-semibold mb-2'>
+              <h3 className='text-2xl font-semibold mb-4'>
                 Capstone Project: Turn-Based Roguelite Video Game{' '}
               </h3>
-              <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                <b>Title:</b> Department of Malicious Vagueness <br />
-                <b>The Goal:</b> Deliver a playable Minimum Viable Product (MVP)
-                with a focus on system integrity and calibrated difficulty curve{' '}
-                <br />
-                <b>Your Specific Role:</b> Served as Encounter Designer,
-                focusing on designing and implementing enemies and the boss
-                encounter
-                <br />
-                <b>The Result/Impact:</b> Designed and implemented an enemy
-                roster whose unique mechanics and behaviors reinforced core
-                narrative themes and advanced player skill progression. This
-                culminated in a multi-phase boss encounter that successfully
-                tested the player&apos;s mastery of all game systems.
-              </p>
+              <div className='md:columns-2 gap-x-8'>
+                <p className='text-gray-600 dark:text-gray-400 mb-4'>
+                  <b>Title:</b> Department of Malicious Vagueness <br />
+                  <b>The Goal:</b> Deliver a playable Minimum Viable Product
+                  (MVP) with a focus on system integrity and calibrated
+                  difficulty curve <br />
+                  <b>My Role:</b> Served as Encounter Designer, focusing on
+                  designing and implementing enemies and boss encounter
+                  <br />
+                </p>
+                <p className='text-gray-600 dark:text-gray-400 mb-10'>
+                  <b>The Result/Impact:</b> Designed and implemented an enemy
+                  roster whose unique mechanics and behaviors reinforced core
+                  narrative themes and advanced player skill progression. This
+                  culminated in a multi-phase boss encounter that successfully
+                  tested the player&apos;s mastery of all game systems.
+                </p>
+              </div>
               <Link
                 href='/projects/project-1'
                 className='text-blue-500 hover:underline'
@@ -93,7 +97,7 @@ export default function AboutPage() {
               </Link>
             </div>
           </div>
-          <div className='bg-gray-50 dark:bg-gray-900 p-8 rounded-lg'>
+          <div className='dark:bg-gray-900 p-8 rounded-lg'>
             <h2 className='text-3xl font-bold mb-4 text-center'>
               Design Skills
             </h2>
@@ -135,25 +139,18 @@ export default function AboutPage() {
             <h2 className='text-3xl font-bold mb-4 text-center'>
               Technical Skills
             </h2>
-            <div className='grid md:grid-cols-3 gap-8 text-center'>
+            <div className='grid md:grid-cols-2 gap-8 text-center'>
               <div>
                 <h3 className='text-xl font-semibold mb-2'>
-                  Game Engine & Prototyping
+                  Tools & Languages
                 </h3>
                 <ul className='text-sm list-disc list-inside inline-block text-left'>
                   <li>Unity</li>
                   <li>Visual Scripting</li>
                   <li>Figma</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className='text-xl font-semibold mb-2'>Programming</h3>
-                <ul className='text-sm list-disc list-inside inline-block text-left'>
                   <li>C#</li>
-                  <li>JavaScript(TypeScript)</li>
+                  <li>JavaScript/TypeScript</li>
                   <li>OOP</li>
-                  <li>Data Structures</li>
-                  <li>Design Patterns</li>
                   <li>Debugging</li>
                 </ul>
               </div>
