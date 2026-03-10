@@ -19,7 +19,7 @@ export default function Header() {
           Game Designer
         </p>
         <nav className='mt-8 flex justify-center space-x-8'>
-          <NavLink href='/'>Recent Project</NavLink>
+          <NavLink href='/'>Featured Project</NavLink>
           <NavLink href='/about'>About</NavLink>
           <NavLink href='/resume'>Resume</NavLink>
         </nav>
