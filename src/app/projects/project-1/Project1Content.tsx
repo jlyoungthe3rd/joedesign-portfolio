@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useRef, memo } from 'react';
 import FlowDiagram from '@/components/diagrams/FlowDiagram';
@@ -43,7 +43,8 @@ export default function Project1Content() {
             producing option paralysis and longer first-turn dwell time.
           </p>
           <p className='mb-3'>
-            <b>Insight:</b> Player more likely to not experiment due to cognitive overload.
+            <b>Insight:</b> Player more likely to not experiment due to
+            cognitive overload.
           </p>
           <p className='mb-3'>
             <b>Solution:</b> Layered ability unlocks + tutorial encounter +
@@ -333,9 +334,6 @@ export default function Project1Content() {
           <div>
             <h1 className='text-4xl font-bold'>
               Department of Malicious Vagueness
-              <span className='ml-2 align-middle rounded bg-indigo-100 dark:bg-indigo-800/60 px-2 py-0.5 text-xs font-semibold text-indigo-700 dark:text-indigo-200'>
-                MVP
-              </span>
             </h1>
             <p className='mt-4'>
               The Department of Malicious Vagueness is a social roguelite
@@ -345,11 +343,11 @@ export default function Project1Content() {
               you fired into oblivion.
               <br />
               <br />
-              As the Encounter Designer, I designed and implemented a
-              roster of enemies with mechanics and behaviors that reinforce narrative
+              As the Encounter Designer, I designed and implemented a roster of
+              enemies with mechanics and behaviors that reinforce narrative
               themes and advanced player skill progression. This culminates in a
-              multi-phase boss encounter that tests the
-              player&apos;s mastery of game systems.
+              multi-phase boss encounter that tests the player&apos;s mastery of
+              game systems.
             </p>
             <ul className='text-gray-600 dark:text-gray-400 mt-2 list-disc list-inside'>
               <li>
