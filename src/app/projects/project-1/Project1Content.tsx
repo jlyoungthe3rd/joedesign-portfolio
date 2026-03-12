@@ -335,7 +335,10 @@ export default function Project1Content() {
             <h1 className='hidden md:block text-4xl font-bold'>
               Department of Malicious Vagueness
             </h1>
-            <p className='mt-4'>
+            <p className='hidden md:block text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mt-1'>
+              A Social Roguelite
+            </p>
+            <p className='mt-4 md:mt-3'>
               The Department of Malicious Vagueness is a social roguelite
               combining elements from <i>Papers Please</i> and{' '}
               <i>Slay the Spire</i> set in an afterlife DMV where doing your job
@@ -362,10 +365,10 @@ export default function Project1Content() {
             </ul>
           </div>
           <div className='order-1 md:order-2 flex flex-col items-center'>
-            <h1 className='md:hidden text-4xl font-bold text-center w-full mb-1'>
+            <h1 className='md:hidden text-3xl sm:text-4xl leading-tight font-bold text-center w-full mb-1'>
               Department of Malicious Vagueness
             </h1>
-            <p className='md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 text-center w-full mb-4'>
+            <p className='md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 text-center w-full mb-3'>
               A Social Roguelite
             </p>
             <div className='relative w-full h-96 mb-4'>
