@@ -331,8 +331,8 @@ export default function Project1Content() {
     <>
       <ScrollFadeIn>
         <div className='grid md:grid-cols-2 gap-8 items-center mb-12'>
-          <div>
-            <h1 className='text-4xl font-bold'>
+          <div className='order-2 md:order-1'>
+            <h1 className='hidden md:block text-4xl font-bold'>
               Department of Malicious Vagueness
             </h1>
             <p className='mt-4'>
@@ -361,7 +361,13 @@ export default function Project1Content() {
               </li>
             </ul>
           </div>
-          <div className='flex flex-col items-center'>
+          <div className='order-1 md:order-2 flex flex-col items-center'>
+            <h1 className='md:hidden text-4xl font-bold text-center w-full mb-1'>
+              Department of Malicious Vagueness
+            </h1>
+            <p className='md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 text-center w-full mb-4'>
+              A Social Roguelite
+            </p>
             <div className='relative w-full h-96 mb-4'>
               <iframe
                 src='https://www.youtube.com/embed/CtJ3QhobS7M'
